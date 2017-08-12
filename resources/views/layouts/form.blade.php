@@ -1,15 +1,18 @@
+@include('vendor.ueditor.assets')
+
 <form action="/article" method="post">
   {!! csrf_field() !!}
   <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
     <label for="title">标题</label>
-    <input id="title" value="{{old('title')}}" type="text" name="title" class="form-control" placeholder="标题"> @if ($errors->has('title'))
+    <input id="title" value="{{old('title') ? old('title') : $article->title}} " type="text" name="title" class="form-control"
+      placeholder="标题"> @if ($errors->has('title'))
     <span class="help-block">
                                         <strong>{{ $errors->first('title') }}</strong>
                                     </span> @endif
   </div>
   <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
     <label for="category">分类</label>
-    <input type="text" name="category" placeholder="分类" class="form-control"> @if ($errors->has('title'))
+    <input type="text" value="{{old('category') ? old('category') : $article->category}}" name="category" placeholder="分类" class="form-control">    @if ($errors->has('title'))
     <span class="help-block">
                                         <strong>{{ $errors->first('category') }}</strong>
                                     </span> @endif
@@ -24,7 +27,8 @@
     </script>
 
     <!-- 编辑器容器 -->
-    <script id="container" name="content" type="text/plain"></script>
+    <script id="container" name="content" type="text/plain">
+      {{old('content') ? old('content') : $article->content}} </script>
     @if ($errors->has('content'))
     <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>

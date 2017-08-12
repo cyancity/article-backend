@@ -16,3 +16,6 @@ Auth::routes();
 
 Route::get('/home', 'ArticleController@index')->name('home');
 Route::resource('article','ArticleController');
+Route::post('article/edit','ArticleController@edit');
+Route::any('article/update/{id}','ArticleController@update');
+Route::get('article/delete/{id}','ArticleController@destroy');

@@ -45,8 +45,8 @@
                                 <td>{{ date('Y-m-d', $article->updated_at) }}</td>
                                 <td>
                                     <a href="">详情</a>
-                                    <a href="/article/">修改</a>
-                                    <a href="">删除</a>
+                                    <a href="/article/update/{{$article->id}}">修改</a>
+                                    <a href="/article/delete/{{$article->id}}">删除</a>
                                 </td>
                             </tr>
                             @endforeach

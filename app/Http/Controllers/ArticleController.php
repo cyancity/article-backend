@@ -73,9 +73,20 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit(Request $request)
     {
-        //
+        $id = $request->input('id');
+        $article = Article::find($id);
+        if($request->isMethod('post')) {
+            $data = $request->input();
+            $article->title = $data['title'];
+            $article->category = $data['category'];
+            $article->content = $data['content'];
+            if ($article->save()) {
+                return redirect('/')->with('success','修改成功-'.$id);
+            }
+        }
+        return view('article.edit',['article' => $article]);
     }
 
     /**
@@ -85,9 +96,11 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+        
+        return view('article.edit',['article' => $article]);
     }
 
     /**
@@ -96,9 +109,12 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy(Article $article, $id)
     {
-        //
+        $data = $article->find($id);
+        if ($data->delete()) {
+            return redirect()->back()->with('success','删除成功');
+        }
     }
 
     public function vue()
