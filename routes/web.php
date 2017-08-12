@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', 'ArticleController@index');
 Auth::routes();
-
+Route::get('/', 'ArticleController@index');
 Route::get('/home', 'ArticleController@index')->name('home');
 Route::resource('article','ArticleController');
 Route::post('article/edit','ArticleController@edit');

@@ -11,7 +11,7 @@ class ArticleController extends Controller
 {
     public function __construct(ArticleRepository $articleRepository)
     {
-        $this->middleware('auth')->except(['index', 'show','vue']);
+        $this->middleware('auth')->except(['show','vue']);
         $this->articleRepository = $articleRepository;
     }
     /**
@@ -33,8 +33,8 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(Article $article)
+    {  
         return view('article.make');
     }
  
