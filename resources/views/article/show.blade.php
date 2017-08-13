@@ -6,24 +6,20 @@
             <div class="col-md-8 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        {{ $question->title }}
-                        @foreach($question->topics as $topic)
-                            <a class="topic"> {{$topic->name}} </a>
-                        @endforeach
+                        {{ $article->title }}
+                            <a class="topic"> {{$article->category}} </a>
                     </div>
 
                     <div class="panel-body">
-                        {!! $question->body !!}
+                        {!! $article->body !!}
                     </div>
                     <div class="actions">
-                        @if(Auth::check() && Auth::user()->owns($question))
-                            <span class="edit"><a href="/questions/{{$question->id}}/edit">编辑</a></span>
-                            <form action="/questions/{{$question->id}}" method="post" class="delete-form">
+                            <span class="edit"><a href="/articles/{{$article->id}}/edit">编辑</a></span>
+                            <form action="/articles/{{$article->id}}" method="post" class="delete-form">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                                 <button class="button is-naked delete-button">删除</button>
                             </form>
-                        @endif
                     </div>
                 </div>
             </div>

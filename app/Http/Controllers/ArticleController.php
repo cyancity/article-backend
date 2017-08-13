@@ -50,7 +50,7 @@ class ArticleController extends Controller
         $category = $this->articleRepository->normalizeCategory($request->input('category'));
         $data = $request->input();
         $article = $this->articleRepository->create($data);
-        $article->category()->attach($category);
+        $article->category()->associate($category);
         return redirect()->route('article.show', [$article->id]);
     }
 
@@ -63,7 +63,7 @@ class ArticleController extends Controller
     public function show($id)
     {
         $article = $this->articleRepository->byId($id);
-        return view('article.show', compact('question'));
+        return view('article.show', compact('article'));
     }
 
     /**

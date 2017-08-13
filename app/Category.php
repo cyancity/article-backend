@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Article;
 class Category extends Model
 {
     
@@ -11,6 +11,6 @@ class Category extends Model
 
     public function article()
     {
-        return $this->hasMany(App\Article)->orderBy('created_at','desc');
+        return $this->hasMany(Article::class)->orderBy('created_at','desc');
     }
 }
