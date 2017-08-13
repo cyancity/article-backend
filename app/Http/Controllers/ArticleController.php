@@ -33,7 +33,7 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Article $article)
+    public function create()
     {  
         return view('article.make');
     }
@@ -45,15 +45,13 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreArticleRequest $request)
+    public function store(Request $request)
     {
+        $category = $this->articleRepository->normalizeCategory($request->input('category'));
         $data = $request->input();
-        $article = new Article();
-        if ($article->create($data)) {
-            return redirect('/home')->with('success','添加成功');
-        } else {
-            return redirect()->back();
-        }
+        $article = $this->articleRepository->create($data);
+        $article->category()->attach($category);
+        return redirect()->route('article.show', [$article->id]);
     }
 
     /**
@@ -62,8 +60,10 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show($id)
     {
+        $article = $this->articleRepository->byId($id);
+        return view('article.show', compact('question'));
     }
 
     /**
@@ -72,20 +72,11 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Request $request, $id)
     {
-        $id = $request->input('id');
-        $article = Article::find($id);
-        if($request->isMethod('post')) {
-            $data = $request->input();
-            $article->title = $data['title'];
-            $article->category = $data['category'];
-            $article->content = $data['content'];
-            if ($article->save()) {
-                return redirect('/')->with('success','修改成功-'.$id);
-            }
-        }
-        return view('article.edit',['article' => $article]);
+        $article = $this->articleRepository->byId($id);;
+
+        return view('article.edit',compact('article'));
     }
 
     /**
@@ -95,11 +86,16 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreArticleRequest $request, $id)
     {
-        $article = Article::find($id);
-        
-        return view('article.edit',['article' => $article]);
+        $article = $this->articleRepository->byId($id);
+        $category = $this->articleRepository->normalizeCategory($request->input('category'));
+        $article->update([
+            'title' => $request->input('title'),
+            'content' => $request->input('content')
+        ]);
+        $article->category()->sync($category);
+        return redirect()->route('article.show', [$article->id])->with('success','修改成功-'.$id);
     }
 
     /**
@@ -108,17 +104,18 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article, $id)
+    public function destroy($id)
     {
-        $data = $article->find($id);
-        if ($data->delete()) {
+        $article = $this->articleRepository->byId($id);
+        if ($article->delete()) {
             return redirect()->back()->with('success','删除成功');
         }
+        abort(500, 'Internal Problem');
     }
 
     public function vue()
     {
-        $articles = $this->articleRepository->getArticle();
-        return response()->json($articles);
+        $articles = $this->articleRepository->getCate();
+        return $articles;
     }
 }

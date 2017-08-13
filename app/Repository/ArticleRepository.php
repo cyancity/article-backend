@@ -3,10 +3,16 @@
 namespace App\Repository;
 
 use App\Article;
-use App\Topic;
+use App\Category;
+use Illuminate\Support\Facades\DB;
 
 class ArticleRepository
 {
+    public function byId($id)
+    {
+        return Article::find($id);
+    }
+
     public function byIdWithTopics($id)
     {
         return Article::where('id',$id)->with(['topics'])->first();
@@ -17,21 +23,35 @@ class ArticleRepository
         return Article::create($attributes);
     }
 
+    public function getCate()
+    {
+        $category = DB::table('articles')->select('category')->distinct()->get()->toArray();
+        
+        return $category; 
+    }
+    public function byCategoryWithArticles($category)
+    {
+        return Category::where('category',$category)->first();
+    }
+
+
     public function getArticle()
     {
         //published 是scopePublised方法
         return Article::paginate(15);
     }
 
-    public function getCategory($index)
+    public function normalizeCategory($categories)
     {
-        $category = [
-            Article::CATE_1 => '1',
-            Article::CATE_2 => '2',
-            Article::CATE_3 => '3',
-        ];
-        if (isset($index)) {
-            return array_key_exists($index,$category) ? $category[$index] : $category[Article::CATE_1];
-        }
+        return collect($categories)->map(function ($category) {
+            if (is_numeric($category)) {
+                Category::find($category)->increment('article_count');
+                return (int)$category;
+            }
+
+            $newCategory = Category::create(['title' => $category, 'article_count' => 1]);
+
+            return $newCategory->id;
+        })->toArray();
     }
 }

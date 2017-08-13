@@ -41,8 +41,8 @@
                                 <td>{{ $article->title }}</td>
                                 <td>category</td>
                                 <td>{{ $article->is_hidden }}</td>
-                                <td>{{ date('Y-m-d', $article->created_at) }}</td>
-                                <td>{{ date('Y-m-d', $article->updated_at) }}</td>
+                                <td>{{ $article->created_at }}</td>
+                                <td>{{ $article->updated_at }}</td>
                                 <td>
                                     <a href="">详情</a>
                                     <a href="/article/update/{{$article->id}}">修改</a>

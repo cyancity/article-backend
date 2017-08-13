@@ -10,9 +10,9 @@
 
                 <div class="panel-body">
 
-                    <form action="/article/edit" method="post">
+                    <form action="/article/{{$article->id}}" method="post">
+                        {{ method_field('PATCH') }}
                         {!! csrf_field() !!}
-                        <input type="hidden" name="id" value="{{$article->id}}">
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="title">标题</label>
                             <input id="title" value="{{old('title') ? old('title') : $article->title}} " type="text" name="title" class="form-control"
@@ -21,13 +21,13 @@
                                         <strong>{{ $errors->first('title') }}</strong>
                                     </span> @endif
                         </div>
-                        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                            <label for="category">分类</label>
-                            <input type="text" value="{{old('category') ? old('category') : $article->category}}" name="category" placeholder="分类" class="form-control">                            @if ($errors->has('title'))
-                            <span class="help-block">
-                                        <strong>{{ $errors->first('category') }}</strong>
-                                    </span> @endif
-                        </div>
+                        <div class="form-group">
+                                <select name="category[]" class="js-example-placeholder-multiple js-data-example-ajax form-control" multiple="multiple">
+                                    @foreach($article->category as $category)
+                                        <option value="{{ $category->id }}" selected="selected">{{ $category->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                             <!-- 实例化编辑器 -->
                             <script type="text/javascript">
@@ -45,12 +45,53 @@
                                         <strong>{{ $errors->first('content') }}</strong>
                                     </span> @endif
                         </div>
-                        <button class="btn btn-success pull-right" type="submit">发布问题</button>
+                        <button class="btn btn-success pull-right" type="submit">修改问题</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@section('js')
+<script>
+    $(document).ready(function() {
+            function formatCategory (Category) {
+                return "<div class='select2-result-repository clearfix'>" +
+                "<div class='select2-result-repository__meta'>" +
+                "<div class='select2-result-repository__title'>" +
+                Category.name ? Category.name : "Laravel"   +
+                    "</div></div></div>";
+            }
 
+            function formatCategorySelection (Category) {
+                return Category.name || Category.text;
+            }
+
+            $(".js-example-placeholder-multiple").select2({
+                tags: true,
+                placeholder: '选择相关话题',
+                minimumInputLength: 2,
+                ajax: {
+                    url: '/api/categories',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term
+                        };
+                    },
+                    processResults: function (data, params) {
+                        return {
+                            results: data
+                        };
+                    },
+                    cache: true
+                },
+                templateResult: formatCategory,
+                templateSelection: formatCategorySelection,
+                escapeMarkup: function (markup) { return markup; }
+            });
+        });
+</script>
+@endsection
 @endsection

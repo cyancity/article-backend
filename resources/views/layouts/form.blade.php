@@ -1,6 +1,6 @@
 @include('vendor.ueditor.assets')
 
-<form action="/article" method="post">
+<form action="/article/{}" method="post">
   {!! csrf_field() !!}
   <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
     <label for="title">标题</label>

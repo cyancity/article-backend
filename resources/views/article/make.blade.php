@@ -10,7 +10,7 @@
 
             <div class="panel-body">
 
-                <form action="/article" method="post">
+                <form action="{{url('/article')}}" method="post">
                     {!! csrf_field() !!}
                     <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                         <label for="title">标题</label>
@@ -20,13 +20,10 @@
                                         <strong>{{ $errors->first('title') }}</strong>
                                     </span> @endif
                     </div>
-                    <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                        <label for="category">分类</label>
-                        <input type="text" value="{{old('category')}}" name="category" placeholder="分类" class="form-control">                        @if ($errors->has('title'))
-                        <span class="help-block">
-                                        <strong>{{ $errors->first('category') }}</strong>
-                                    </span> @endif
-                    </div>
+                    <div class="form-group">
+                                <select name="category" class="js-example-placeholder-multiple js-data-example-ajax form-control" multiple="multiple">
+                                </select>
+                            </div> 
                     <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                         <!-- 实例化编辑器 -->
                         <script type="text/javascript">
@@ -49,7 +46,7 @@
             </div>
         </div>
     </div>
+    
 </div>
 </div>
-
 @endsection
