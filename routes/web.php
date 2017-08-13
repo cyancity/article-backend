@@ -18,3 +18,5 @@ Route::resource('article','ArticleController');
 Route::post('article/edit','ArticleController@edit');
 Route::any('article/update/{id}','ArticleController@update');
 Route::get('article/delete/{id}','ArticleController@destroy');
+Route::any('/news', 'NewsController@index');
+Route::get('/show/{id}','NewsController@show');
