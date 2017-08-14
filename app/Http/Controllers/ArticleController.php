@@ -47,10 +47,11 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $category = $this->articleRepository->normalizeCategory($request->input('category'));
+        $method = 'store';
+        $category = $this->articleRepository->checkCategory($request->input('category'),$method);
         $data = $request->input();
         $article = $this->articleRepository->create($data);
-        $article->category()->associate($category);
+        // $article->category()->associate($category);
         return redirect()->route('article.show', [$article->id]);
     }
 
@@ -74,8 +75,7 @@ class ArticleController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $article = $this->articleRepository->byId($id);;
-
+        $article = $this->articleRepository->byId($id);
         return view('article.edit',compact('article'));
     }
 
@@ -88,13 +88,17 @@ class ArticleController extends Controller
      */
     public function update(StoreArticleRequest $request, $id)
     {
+        $method = 'update';
         $article = $this->articleRepository->byId($id);
-        $category = $this->articleRepository->normalizeCategory($request->input('category'));
-        $article->update([
+        $checking = $this->articleRepository->checkCategory($request->input('category'),$method);
+        print_r($request->input('category'));
+        if ($checking) {
+            $article->update([
             'title' => $request->input('title'),
+            'category' => implode($request->input('category')),
             'content' => $request->input('content')
-        ]);
-        $article->category()->sync($category);
+            ]);
+        }
         return redirect()->route('article.show', [$article->id])->with('success','修改成功-'.$id);
     }
 

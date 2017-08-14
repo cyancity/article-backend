@@ -22,27 +22,16 @@
 
         <script>
             $(document).ready(function () {
-
                 if (location.hash) {
-
                     $('a[href=' + location.hash + ']').tab('show');
-
                 }
-
                 $(document.body).on("click", "a[data-toggle]", function (event) {
-
                     location.hash = this.getAttribute("href");
-
                 });
-
             });
-
             $(window).on('popstate', function () {
-
                 var anchor = location.hash || $("a[data-toggle=tab]").first().attr("href");
-
                 $('a[href=' + anchor + ']').tab('show');
-
             });
         </script>
         
@@ -53,28 +42,27 @@
             </div>
             <ul class="list-group">
                 <ul class="nav nav-tabs" id="myTab">
-                    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-                    <li><a data-toggle="tab" href="#profile">Profile</a></li>
-                    <li><a data-toggle="tab" href="#messages">Messages</a></li>
-                    <li><a data-toggle="tab" href="#settings">Settings</a></li>
+                    @foreach($articles as $article)
+                    <li class="active"><a data-toggle="tab" href="#{{article->category}}">{{article->category}}</a></li>
+                    @endforeach
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="home">home</div>
-                    <div class="tab-pane" id="profile">profile</div>
-                    <div class="tab-pane" id="messages">messages</div>
-                    <div class="tab-pane" id="settings">settings</div>
+                    @foreach($articles as $article)
+                    <div class="tab-pane active" id="$article->category">
+                        <a href="show/{{ $article->id }}">
+                            <li class="list-group-item">
+                                <span class="badge">{{$article->created_at}}</span> {{ $article->title }}
+                            </li>
+                        </a>
+                        <div class="pull-right">
+                            {{ $articles->render() }}
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
-                @foreach($articles as $article)
-                <a href="show/{{ $article->id }}">
-                    <li class="list-group-item">
-                        <span class="badge">{{ date('Y-m-d', $article->created_at) }}</span> {{ $article->title }}
-                    </li>
-                </a>
-                @endforeach
+                
             </ul>
-            <div class="pull-right">
-                {{ $articles->render() }}
-            </div>
+            
         </div>
     </div>
 </div>

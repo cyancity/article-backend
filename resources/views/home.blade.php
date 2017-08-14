@@ -39,13 +39,13 @@
                             <tr>
                                 <th scope="row">{{ $article->id }}</th>
                                 <td>{{ $article->title }}</td>
-                                <td>category</td>
+                                <td>{{ $article->category }}</td>
                                 <td>{{ $article->is_hidden }}</td>
                                 <td>{{ $article->created_at }}</td>
                                 <td>{{ $article->updated_at }}</td>
                                 <td>
-                                    <a href="">详情</a>
-                                    <a href="/article/update/{{$article->id}}">修改</a>
+                                    <a href="/article/{{$article->id}}">详情</a>
+                                    <a href="/article/{{$article->id}}/edit">修改</a>
                                     <a href="/article/delete/{{$article->id}}">删除</a>
                                 </td>
                             </tr>

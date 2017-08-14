@@ -41,17 +41,25 @@ class ArticleRepository
         return Article::paginate(15);
     }
 
-    public function normalizeCategory($categories)
+    public function checkCategory($category, $method)
     {
-        return collect($categories)->map(function ($category) {
-            if (is_numeric($category)) {
-                Category::find($category)->increment('article_count');
-                return (int)$category;
-            }
-
-            $newCategory = Category::create(['title' => $category, 'article_count' => 1]);
-
-            return $newCategory->id;
-        })->toArray();
+        switch($method){
+            case 'store';
+                    $is_set = Category::where('title', $category)->first();
+                    if (isset($is_set)) {
+                        Category::find($category)->increment('article_count');
+                    } else {
+                        Category::create(['title' => $category, 'article_count' => 1]);
+                    }
+                    break;
+            case 'update';
+                    $is_set = Category::where('title', $category)->first();
+                    if (!isset($is_set)) {
+                        Category::create(['title' => $category, 'article_count' => 1]);
+                    }
+                    break;
+        }
+        // 逻辑似乎可以再优化一下
+        return true;
     }
 }

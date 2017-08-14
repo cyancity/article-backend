@@ -23,9 +23,7 @@
                         </div>
                         <div class="form-group">
                                 <select name="category[]" class="js-example-placeholder-multiple js-data-example-ajax form-control" multiple="multiple">
-                                    @foreach($article->category as $category)
-                                        <option value="{{ $category->id }}" selected="selected">{{ $category->title }}</option>
-                                    @endforeach
+                                        <option selected="selected">{{ $article->category }}</option>
                                 </select>
                             </div>
                         <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
