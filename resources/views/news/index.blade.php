@@ -2,19 +2,15 @@
 <div class="container-fluid all">
     <div class="sidebar">
         <ul class="nav">
-            <li><a href="index.html">主页面</a></li>
-            <li><a href="form.html">Form库</a></li>
-            <li><a href="message.html">Message库</a></li>
-            <li><a href="ui.html">UI库</a></li>
-            <li><a href="animate.html">Animate库</a></li>
-            <li><a href="carousel.html">Carousel库</a></li>
-            <li><a href="chart.html">Chart库</a></li>
+            <li><a href="#">主页面</a></li>
+            <li><a href="#">Form库</a></li>
+
             <li class="has-sub">
                 <a href="javascript:void(0);"><span>导航选中演示</span><i class="fa fa-caret-right fa-fw pull-right"></i></a>
                 <ul class="sub-menu">
-                    <li><a href="left1.html"><i class="fa fa-circle-o fa-fw"></i>&nbsp;left1</a></li>
-                    <li><a href="left2.html"><i class="fa fa-circle-o fa-fw"></i>&nbsp;left2</a></li>
-                    <li><a href="left3.html"><i class="fa fa-circle-o fa-fw"></i>&nbsp;left3及子页面</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o fa-fw"></i>&nbsp;left1</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o fa-fw"></i>&nbsp;left2</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o fa-fw"></i>&nbsp;left3及子页面</a></li>
                 </ul>
             </li>
         </ul>
@@ -43,15 +39,15 @@
             <ul class="list-group">
                 <ul class="nav nav-tabs" id="myTab">
                     @foreach($articles as $article)
-                    <li class="active"><a data-toggle="tab" href="#{{article->category}}">{{article->category}}</a></li>
+                    <li class="active"><a data-toggle="tab" href="#{{'cate'.$article->id}}">{{$article->category}}</a></li>
                     @endforeach
                 </ul>
                 <div class="tab-content">
                     @foreach($articles as $article)
-                    <div class="tab-pane active" id="$article->category">
+                    <div class="tab-pane active" id="{{'cate'.$article->id}}">
                         <a href="show/{{ $article->id }}">
                             <li class="list-group-item">
-                                <span class="badge">{{$article->created_at}}</span> {{ $article->title }}
+                                <span class="badge">{{ $article->created_at }}</span> {{ $article->title }}
                             </li>
                         </a>
                         <div class="pull-right">

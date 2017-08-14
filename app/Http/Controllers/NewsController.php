@@ -15,7 +15,6 @@ class NewsController extends Controller
     public function index()
     {
         $articles = $this->articleRepository->getArticle();
-        
         // $category = $this->articleRepository->getCategory($articles['category']);
         
         return view('news.index',['articles' => $articles]);
