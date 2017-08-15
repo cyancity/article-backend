@@ -46,9 +46,9 @@ class ArticleRepository
         return Article::select(['title','created_at'])->offset($page)->limit(8)->get();
     }
 
-    public function getPagination()
+    public function getContentWithPaginationByItem($item)
     {
-        $results = Article::latest()->paginate(7);
+        $results = Article::where('category', $item)->latest()->paginate(7);
         $response = [
             'pagination' => [
                 'total' => $results->total(),
@@ -62,12 +62,7 @@ class ArticleRepository
         ];
         return $response;
     }
-
-    // public function getCate()
-    // {
-    //     return Category::select('title')->get();
-    // }
-
+    
     public function checkCategory($category, $method)
     {
         switch($method){
@@ -90,8 +85,13 @@ class ArticleRepository
         return true;
     }
 
-    public function findCategoryByItem($item)
+    public function findItems()
     {
-        
+        $categories = Article::select('title')->distinct()->get();
+        $response = [
+            'categories' => $categories,
+            'totalCount' => count($categories)
+        ];
+        return $response;
     }
 }

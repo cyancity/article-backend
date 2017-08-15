@@ -53,7 +53,7 @@ export default {
     }
   },
   mounted () {
-    this.getItems(this.pagination.current_page);
+    this.getContent(this.pagination.current_page);
   },
   computed: {
     isActived: function () {
@@ -80,7 +80,7 @@ export default {
     }
   },
   methods: {
-    getItems (page) {
+    getContent (page) {
       axios.get('api/article/', {
         params: {
           page: page
@@ -96,9 +96,9 @@ export default {
     },
     changePage: function(page) {
       this.pagination.current_page = page
-      this.getItems(page)
+      this.getContent(page)
     },
-    getCate (category) {
+    getItems (category) {
       axios.get('')
     }
   }

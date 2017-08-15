@@ -117,14 +117,15 @@ class ArticleController extends Controller
         abort(500, 'Internal Problem');
     }
 
-    public function vue()
+    public function getContents(Request $request)
     {
-        $articles = $this->articleRepository->getPagination();
-        return $articles;
+        $item = $request->get('item');
+        $contents = $this->articleRepository->getContentsWithPaginationByItem($item);
+        return $contents;
     }
 
     public function getItems()
     {
-        $items = $this->articleRepository->get
+        return $items = $this->articleRepository->findItems();
     }
 }

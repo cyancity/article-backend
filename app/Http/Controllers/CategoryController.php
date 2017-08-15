@@ -18,4 +18,5 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         return $this->category->getCategoriesForTagging($request);
-    }}
+    }
+}
