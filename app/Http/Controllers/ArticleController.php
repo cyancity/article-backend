@@ -119,7 +119,7 @@ class ArticleController extends Controller
 
     public function vue()
     {
-        $articles = $this->articleRepository->getCate();
+        $articles = $this->articleRepository->getPagination();
         return $articles;
     }
 }

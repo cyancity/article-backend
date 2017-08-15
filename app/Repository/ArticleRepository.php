@@ -41,6 +41,33 @@ class ArticleRepository
         return Article::paginate(15);
     }
 
+    public function getCellInfo($page)
+    {
+        return Article::select(['title','created_at'])->offset($page)->limit(8)->get();
+    }
+
+    public function getPagination()
+    {
+        $results = Article::latest()->paginate(7);
+        $response = [
+            'pagination' => [
+                'total' => $results->total(),
+                'per_page' => $results->perPage(),
+                'current_page' => $results->currentPage(),
+                'last_page' => $results->lastPage(),
+                'from' => $results->firstItem(),
+                'to' => $results->lastItem()
+            ],
+            'data' => $results
+        ];
+        return $response;
+    }
+
+    // public function getCate()
+    // {
+    //     return Category::select('title')->get();
+    // }
+
     public function checkCategory($category, $method)
     {
         switch($method){
