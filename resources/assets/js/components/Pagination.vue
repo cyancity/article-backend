@@ -2,7 +2,7 @@
   <div>
     <ul class="list-group">
       <li class="list-group-item" v-for="(item, index) in items" :key="index">
-        <a href="/article/{{item.id}}">
+        <a :href="'/article/' + item.id">
           {{ item.title }}
         </a>
       </li>
