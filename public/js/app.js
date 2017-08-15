@@ -1659,6 +1659,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1671,11 +1675,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         current_page: 1
       },
       offset: 4,
-      items: []
+      items: [],
+      itemsCount: 1,
+      contents: [],
+      default: '科技'
     };
   },
+
+  // beforeMount () {
+  //   this.getItems()
+  // },
   mounted: function mounted() {
-    this.getItems(this.pagination.current_page);
+    this.getItems();
+    // console.log(this.default)
+    this.getContents(this.default);
   },
 
   computed: {
@@ -1703,15 +1716,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   methods: {
-    getItems: function getItems(page) {
+    getContents: function getContents(item) {
       var _this = this;
 
-      axios.get('api/article/', {
+      axios.get('api/contents/', {
         params: {
-          page: page
+          item: item
         }
       }).then(function (res) {
-        _this.items = res.data.data.data;
+        console.log(res.data);
+        _this.contents = res.data.data.data;
         _this.pagination = res.data.pagination;
       }).catch(function (error) {
         console.log(error);
@@ -1720,10 +1734,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     changePage: function changePage(page) {
       this.pagination.current_page = page;
-      this.getItems(page);
+      this.getContent(page);
     },
-    getCate: function getCate(category) {
-      axios.get('');
+    getItems: function getItems() {
+      var _this2 = this;
+
+      axios.get('api/items').then(function (res) {
+        _this2.items = res.data.category;
+        _this2.itemsCount = res.data.totalCount;
+        _this2.default = _this2.items[0].category;
+      });
     }
   }
 });
@@ -4122,7 +4142,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -31887,17 +31907,28 @@ module.exports = function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._m(0), _vm._v(" "), _c('ul', {
+  return _c('div', [_c('ul', {
     staticClass: "list-group"
-  }, _vm._l((_vm.items), function(item, index) {
+  }, [_c('ul', {
+    staticClass: "nav nav-tabs"
+  }, [_c('li', {
+    staticClass: "active"
+  }, [_c('a', {
+    attrs: {
+      "data-toggle": "tab",
+      "href": ""
+    }
+  }, [_vm._v("\n          " + _vm._s(this.default) + "\n        ")])])])]), _vm._v(" "), _c('ul', {
+    staticClass: "list-group"
+  }, _vm._l((_vm.contents), function(content, index) {
     return _c('li', {
       key: index,
       staticClass: "list-group-item"
     }, [_c('a', {
       attrs: {
-        "href": '/article/' + item.id
+        "href": '/article/' + content.id
       }
-    }, [_vm._v("\n        " + _vm._s(item.title) + "\n      ")]), _vm._v(" "), _c('span', [_vm._v("\n        " + _vm._s(item.created_at) + "\n      ")])])
+    }, [_vm._v("\n        " + _vm._s(content.title) + "\n      ")]), _vm._v(" "), _c('span', [_vm._v("\n        " + _vm._s(content.created_at) + "\n      ")])])
   })), _vm._v(" "), _c('nav', [_c('ul', {
     staticClass: "pagination"
   }, [(_vm.pagination.current_page > 1) ? _c('li', [_c('a', {
@@ -31946,11 +31977,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "aria-hidden": "true"
     }
   }, [_vm._v("»")])])]) : _vm._e()], 2)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
-    staticClass: "nav nav-tabs"
-  }, [_c('li')])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

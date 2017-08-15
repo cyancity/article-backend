@@ -17,5 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('contents/{item}', 'ArticleController@getContents');
+Route::get('contents', 'ArticleController@getContents');
 Route::get('items', 'ArticleController@getItems');

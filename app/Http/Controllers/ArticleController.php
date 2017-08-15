@@ -11,7 +11,7 @@ class ArticleController extends Controller
 {
     public function __construct(ArticleRepository $articleRepository)
     {
-        $this->middleware('auth')->except(['show','vue']);
+        $this->middleware('auth')->except(['show','getContents','getItems']);
         $this->articleRepository = $articleRepository;
     }
     /**

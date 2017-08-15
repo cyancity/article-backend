@@ -12,12 +12,6 @@ class ArticleRepository
     {
         return Article::find($id);
     }
-
-    public function byIdWithTopics($id)
-    {
-        return Article::where('id',$id)->with(['topics'])->first();
-    }
-
     public function create(array $attributes)
     {
         return Article::create($attributes);
@@ -46,9 +40,11 @@ class ArticleRepository
         return Article::select(['title','created_at'])->offset($page)->limit(8)->get();
     }
 
-    public function getContentWithPaginationByItem($item)
+    public function getContentsWithPaginationByItem($item)
     {
+        // dd(Article::where('category', 'like', $item)->get());
         $results = Article::where('category', $item)->latest()->paginate(7);
+        // response needs title, time and pagination data, missing title and time, so add
         $response = [
             'pagination' => [
                 'total' => $results->total(),
@@ -87,10 +83,10 @@ class ArticleRepository
 
     public function findItems()
     {
-        $categories = Article::select('title')->distinct()->get();
+        $categories = Article::select('category')->distinct()->get();
+        // $categories = json_encode($categories);
         $response = [
-            'categories' => $categories,
-            'totalCount' => count($categories)
+            'category' => $categories
         ];
         return $response;
     }

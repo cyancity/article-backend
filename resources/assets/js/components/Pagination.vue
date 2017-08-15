@@ -1,17 +1,21 @@
 <template>
   <div>
-    <ul class="nav nav-tabs">
-      <li>
-
-      </li>
+    <ul class="list-group">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a data-toggle="tab" href="">
+            {{this.default}}
+          </a>
+        </li>
+      </ul>
     </ul>
     <ul class="list-group">
-      <li class="list-group-item" v-for="(item, index) in items" :key="index">
-        <a :href="'/article/' + item.id">
-          {{ item.title }}
+      <li class="list-group-item" v-for="(content, index) in contents" :key="index">
+        <a :href="'/article/' + content.id">
+          {{ content.title }}
         </a>
         <span>
-          {{item.created_at}}
+          {{content.created_at}}
         </span>
       </li>
     </ul>
@@ -49,11 +53,19 @@ export default {
         current_page: 1
       },
       offset: 4,
-      items: []
+      items: [],
+      itemsCount: 1,
+      contents: [],
+      default: '科技'
     }
   },
+  // beforeMount () {
+  //   this.getItems()
+  // },
   mounted () {
-    this.getContent(this.pagination.current_page);
+    this.getItems()
+    // console.log(this.default)
+    this.getContents(this.default)
   },
   computed: {
     isActived: function () {
@@ -80,14 +92,15 @@ export default {
     }
   },
   methods: {
-    getContent (page) {
-      axios.get('api/article/', {
+    getContents (item) {
+      axios.get('api/contents/', {
         params: {
-          page: page
+          item: item
         }
       })
       .then((res) => {
-        this.items = res.data.data.data
+        console.log(res.data)
+        this.contents = res.data.data.data
         this.pagination = res.data.pagination
       })
       .catch(function(error) {
@@ -98,8 +111,13 @@ export default {
       this.pagination.current_page = page
       this.getContent(page)
     },
-    getItems (category) {
-      axios.get('')
+    getItems () {
+      axios.get('api/items')
+      .then((res) => {
+        this.items = res.data.category
+        this.itemsCount = res.data.totalCount
+        this.default = this.items[0].category
+      })
     }
   }
 }
