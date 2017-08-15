@@ -122,4 +122,9 @@ class ArticleController extends Controller
         $articles = $this->articleRepository->getPagination();
         return $articles;
     }
+
+    public function getItems()
+    {
+        $items = $this->articleRepository->get
+    }
 }

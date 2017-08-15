@@ -74,7 +74,7 @@ class ArticleRepository
             case 'store';
                     $is_set = Category::where('title', $category)->first();
                     if (isset($is_set)) {
-                        Category::find($category)->increment('article_count');
+                        Category::where('title',$category)->increment('article_count');
                     } else {
                         Category::create(['title' => $category, 'article_count' => 1]);
                     }
@@ -88,5 +88,10 @@ class ArticleRepository
         }
         // 逻辑似乎可以再优化一下
         return true;
+    }
+
+    public function findCategoryByItem($item)
+    {
+        
     }
 }

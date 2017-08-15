@@ -31,11 +31,12 @@
             });
         </script>
         
-    <div class="maincontent row">
+    <div class="maincontent row" id="pagination">
         <div class="col-sm-12">
             <div class="jumbotron">
                 <h1>Sample Text Here</h1>
             </div>
+            <pagination></pagination>
             <ul class="list-group">
                 <ul class="nav nav-tabs" id="myTab">
                     @foreach($articles as $article)

@@ -1,17 +1,25 @@
 <template>
   <div>
+    <ul class="nav nav-tabs">
+      <li>
+
+      </li>
+    </ul>
     <ul class="list-group">
       <li class="list-group-item" v-for="(item, index) in items" :key="index">
         <a :href="'/article/' + item.id">
           {{ item.title }}
         </a>
+        <span>
+          {{item.created_at}}
+        </span>
       </li>
     </ul>
     <nav>
-      <ul>
+      <ul class="pagination">
         <li v-if="pagination.current_page > 1">
           <a href="#" aria-label="Previous" @click.prevent="changePage(pagination.current_page - 1)">
-            <span aria-hidden="true">1</span>
+            <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
         <li v-for="(page, index) in pagesNumber" :key="index" :class="[page == isActived ? 'active' : '']">
@@ -21,7 +29,7 @@
         </li>
         <li v-if="pagination.current_page < pagination.last_page">
           <a href="#" aria-label="Next" @click.prevent="changePage(pagination.currnet_page + 1)">
-            <span aria-hidden="true">2</span>
+            <span aria-hidden="true">&raquo;</span>
           </a>
         </li>
       </ul>
@@ -72,13 +80,13 @@ export default {
     }
   },
   methods: {
-    getItems () {
-      this.$axios.get('api/article/', {
+    getItems (page) {
+      axios.get('api/article/', {
         params: {
           page: page
         }
       })
-      .then(function(res) {
+      .then((res) => {
         this.items = res.data.data.data
         this.pagination = res.data.pagination
       })
@@ -86,9 +94,12 @@ export default {
         console.log(error)
       })
     },
-    changePaeg: function(page) {
+    changePage: function(page) {
       this.pagination.current_page = page
       this.getItems(page)
+    },
+    getCate (category) {
+      axios.get('')
     }
   }
 }
