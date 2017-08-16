@@ -12,22 +12,13 @@
   <title>{{ config('app.name', 'News') }}</title>
 
   <!-- Styles -->
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/dataurl.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/default.css') }}" rel="stylesheet">
-  <!-- <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">   -->
-  <script src="{{ asset('js/app.js') }}"></script>
-  <script src="{{ asset('js/hammer.min.js') }}"></script>
-  <script src="{{ asset('js/jquery.extend.js') }}"></script>
-  <script src="{{ asset('js/jquery.hammer.js') }}"></script>
-  <script src="{{ asset('js/pace.min.js') }}"></script>
-  <script src="{{ asset('js/scrolltopcontrol.js') }}"></script>
-  <script src="{{ asset('js/default.js') }}"></script>
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+   <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">   
 
 </head>
 
 <body>
-  <div id="app">
+  <div id="mob">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -41,9 +32,7 @@
 
     @yield('content')
   </div>
-
-  <!-- Scripts -->
-
+  <script src="{{ mix('js/mob.js') }}"></script>
 
 </body>
 

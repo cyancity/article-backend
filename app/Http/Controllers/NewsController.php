@@ -16,8 +16,9 @@ class NewsController extends Controller
     {
         $articles = $this->articleRepository->getArticle();
         // $category = $this->articleRepository->getCategory($articles['category']);
-        
-        return view('news.index',['articles' => $articles]);
+        $items = $this->articleRepository->findItems();
+
+        return view('news.index',['articles' => $articles,'items' => $items]);
     }
 
     public function show($id)

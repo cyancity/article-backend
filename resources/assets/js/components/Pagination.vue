@@ -59,6 +59,9 @@ export default {
       default: '科技'
     }
   },
+  props: [
+    'defaultItem'
+  ],
   // beforeMount () {
   //   this.getItems()
   // },
