@@ -13,7 +13,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
 </head>
 
 <body>
@@ -78,6 +77,7 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script>
         $(document).ready(function() {
             function formatTopic (topic) {
@@ -96,22 +96,22 @@
                 tags: true,
                 placeholder: '选择相关话题',
                 minimumInputLength: 2,
-                ajax: {
-                    url: '/api/topics',
-                    dataType: 'json',
-                    delay: 250,
-                    data: function (params) {
-                        return {
-                            q: params.term
-                        };
-                    },
-                    processResults: function (data, params) {
-                        return {
-                            results: data
-                        };
-                    },
-                    cache: true
-                },
+                // ajax: {
+                //     url: '/api/topics',
+                //     dataType: 'json',
+                //     delay: 250,
+                //     data: function (params) {
+                //         return {
+                //             q: params.term
+                //         };
+                //     },
+                //     processResults: function (data, params) {
+                //         return {
+                //             results: data
+                //         };
+                //     },
+                //     cache: true
+                // },
                 templateResult: formatTopic,
                 templateSelection: formatTopicSelection,
                 escapeMarkup: function (markup) { return markup; },
