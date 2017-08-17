@@ -9,6 +9,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('pagination', require('./components/Pagination.vue'));
+Vue.component('sidebar', require('./components/Sidebar.vue'));
 
 const app = new Vue({
     el: '#mob'

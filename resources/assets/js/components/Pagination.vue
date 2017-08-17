@@ -2,13 +2,14 @@
   <div>
     <ul class="list-group">
       <ul class="nav nav-tabs">
-        <li class="active">
-          <a data-toggle="tab" href="">
-            {{this.default}}
+        <li class="active" v-for="(item,index) in tabItems">
+          <a data-toggle="tab" href="" @click="getContents(item.category)">
+            {{item.category}}
           </a>
         </li>
       </ul>
     </ul>
+
     <ul class="list-group">
       <li class="list-group-item" v-for="(content, index) in contents" :key="index">
         <a :href="'/article/' + content.id">
@@ -19,6 +20,7 @@
         </span>
       </li>
     </ul>
+
     <nav>
       <ul class="pagination">
         <li v-if="pagination.current_page > 1">
@@ -56,19 +58,18 @@ export default {
       items: [],
       itemsCount: 1,
       contents: [],
-      default: '科技'
+      tabItems: {},
+      defaultItem: '科技'
     }
   },
-  props: [
-    'defaultItem'
-  ],
   // beforeMount () {
   //   this.getItems()
   // },
-  mounted () {
+  created () {
     this.getItems()
-    // console.log(this.default)
-    this.getContents(this.default)
+  },
+  mounted () {
+    this.getContents(this. defaultItem)
   },
   computed: {
     isActived: function () {
@@ -117,9 +118,7 @@ export default {
     getItems () {
       axios.get('api/items')
       .then((res) => {
-        this.items = res.data.category
-        this.itemsCount = res.data.totalCount
-        this.default = this.items[0].category
+        this.tabItems = res.data.category
       })
     }
   }

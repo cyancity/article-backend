@@ -14,11 +14,12 @@ class NewsController extends Controller
 
     public function index()
     {
-        $articles = $this->articleRepository->getArticle();
+        // $articles = $this->articleRepository->getArticle();
         // $category = $this->articleRepository->getCategory($articles['category']);
         $items = $this->articleRepository->findItems();
-
-        return view('news.index',['articles' => $articles,'items' => $items]);
+        $items = implode(',', $items);
+        // dd($items);
+        return view('news.index',['items' => $items]);
     }
 
     public function show($id)

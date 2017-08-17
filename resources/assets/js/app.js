@@ -6,18 +6,18 @@
  */
 
 require('./bootstrap');
-// require('./select2.min.js');
+require('./select2.min.js');
 
-window.Vue = require('vue');
+// window.Vue = require('vue');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+// /**
+//  * Next, we will create a fresh Vue application instance and attach it to
+//  * the page. Then, you may begin adding components to this application
+//  * or customize the JavaScript scaffolding to fit your unique needs.
+//  */
+// Vue.component('sidebar', require('./components/Sidebar.vue'));
+// Vue.component('pagination', require('./components/Pagination.vue'));
 
-Vue.component('pagination', require('./components/Pagination.vue'));
-
-const app = new Vue({
-    el: '#app'
-});
+// const app = new Vue({
+//     el: '#app'
+// });
