@@ -45,7 +45,7 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreArticleRequest $request)
     {
         $method = 'store';
         $category = $this->articleRepository->checkCategory($request->input('category'),$method);
@@ -70,10 +70,9 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
         $article = $this->articleRepository->byId($id);
         return view('article.edit',compact('article'));

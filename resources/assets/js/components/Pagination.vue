@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="list-group">
+    <ul class="list-group" style="width: 100%;overflow:scroll;-webkit-overflow-scrolling:touch;">
       <ul class="nav nav-tabs">
         <li class="active" v-for="(item,index) in tabItems">
           <a data-toggle="tab" href="" @click="getContents(item.category)">
@@ -113,7 +113,7 @@ export default {
     },
     changePage: function(page) {
       this.pagination.current_page = page
-      this.getContent(page)
+      this.getContents(page)
     },
     getItems () {
       axios.get('api/items')

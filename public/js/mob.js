@@ -1738,7 +1738,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     changePage: function changePage(page) {
       this.pagination.current_page = page;
-      this.getContent(page);
+      this.getContents(page);
     },
     getItems: function getItems() {
       var _this2 = this;
@@ -32014,7 +32014,12 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('ul', {
-    staticClass: "list-group"
+    staticClass: "list-group",
+    staticStyle: {
+      "width": "100%",
+      "overflow": "scroll",
+      "-webkit-overflow-scrolling": "touch"
+    }
   }, [_c('ul', {
     staticClass: "nav nav-tabs"
   }, _vm._l((_vm.tabItems), function(item, index) {

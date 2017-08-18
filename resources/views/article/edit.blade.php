@@ -37,7 +37,7 @@
 
                             <!-- 编辑器容器 -->
                             <script id="container" name="content" type="text/plain">
-                                {{old('content') ? old('content') : $article->content}} </script>
+                                {{!! $article->content !!}} </script>
                             @if ($errors->has('content'))
                             <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>
