@@ -1671,7 +1671,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       pagination: {
         total: 0,
-        per_pgae: 7,
+        per_pgae: 10,
         from: 1,
         to: 0,
         current_page: 1

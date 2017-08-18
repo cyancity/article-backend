@@ -20,10 +20,11 @@
                                         <strong>{{ $errors->first('title') }}</strong>
                                     </span> @endif
                     </div>
-                    <div class="form-group">
-                                <select name="category" class="js-example-placeholder-multiple js-data-example-ajax form-control" multiple="multiple">
-                                </select>
-                            </div> 
+                    <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+                        <select name="category" class="js-example-placeholder-multiple js-data-example-ajax form-control" multiple="multiple">
+                        </select>
+                        {{ $errors->has('content') ? ' has-error' : '' }}
+                    </div> 
                     <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                         <!-- 实例化编辑器 -->
                         <script type="text/javascript">
@@ -35,11 +36,12 @@
 
                         <!-- 编辑器容器 -->
                         <script id="container" name="content" type="text/plain">
-                            {{old('content')}} </script>
+                            {{!! old('content') !!}} </script>
                         @if ($errors->has('content'))
                         <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>
-                                    </span> @endif
+                        </span> 
+                        @endif
                     </div>
                     <button class="btn btn-success pull-right" type="submit">发布问题</button>
                 </form>

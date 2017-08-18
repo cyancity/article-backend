@@ -43,7 +43,7 @@ class ArticleRepository
     public function getContentsWithPaginationByItem($item)
     {
         // dd(Article::where('category', 'like', $item)->get());
-        $results = Article::where('category', $item)->latest()->paginate(7);
+        $results = Article::where('category', $item)->latest()->paginate(10);
         // response needs title, time and pagination data, missing title and time, so add
         $response = [
             'pagination' => [
