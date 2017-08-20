@@ -10,13 +10,22 @@ class CategoryController extends Controller
 {
     protected $category;
 
-    public function __construct(CategoryRepository $category)
+    public function __construct(CategoryRepository $categoryRepository)
     {
-        $this->category = $category;
+        $this->categoryRepository = $categoryRepository;
+
     }
 
-    public function index(Request $request)
+    public function index()
     {
-        return $this->category->getCategoriesForTagging($request);
+        $category = $this->categoryRepository->getCategory();
+        return view('category.index',compact('category'));
+    }
+
+    public function update($name)
+    {
+        $category = $this->categoryRepository->updateByName($name);
+        return redirect()->route('category.index')->with('success',$name.'-修改成功');
+
     }
 }

@@ -3,14 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Category;
 class Article extends Model
 {
-    const CATE_1 = 1;
-    const CATE_2 = 2;
-    const CATE_3 = 3;
 
-    protected $fillable = ['title', 'content', 'category'];
+    protected $fillable = ['title', 'content', 'category','url'];
 
     public function category()
     {

@@ -168,6 +168,8 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Overtrue\LaravelUEditor\UEditorServiceProvider::class,
+        Recca0120\LaravelTracy\LaravelTracyServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
 
         /*

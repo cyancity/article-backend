@@ -8,14 +8,12 @@
                 @if (Session::has('success'))
                 <div class="alert alert-success alert-dismissible" role="alert">
                     <button class="close" type="button" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
                     <strong>{{ Session::get('success') }}</strong>
                 </button>
                 </div>
                 @endif @if (Session::has('error'))
                 <div class="alert alert-danger alert-dismissible" role="alert">
                     <button class="close" type="button" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
                     <strong>{{ Session::get('error') }}</strong>
                 </button>
                 </div>
@@ -27,10 +25,10 @@
                                 <th>编号</th>
                                 <td>标题</td>
                                 <td>分类</td>
-                                <td>是否隐藏</td>
+                                <td>跳转地址</td>
                                 <td>发布时间</td>
                                 <td>最后修改时间</td>
-                                <td style="120">操作</td>
+                                <td>操作</td>
                             </tr>
                         </thead>
 
@@ -40,7 +38,7 @@
                                 <th scope="row">{{ $article->id }}</th>
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->category }}</td>
-                                <td>{{ $article->is_hidden }}</td>
+                                <td>{{ $article->has('url') ? $article->url : '无' }}</td>
                                 <td>{{ $article->created_at }}</td>
                                 <td>{{ $article->updated_at }}</td>
                                 <td>

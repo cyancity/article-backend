@@ -12,6 +12,7 @@ class ArticleRepository
     {
         return Article::find($id);
     }
+
     public function create(array $attributes)
     {
         return Article::create($attributes);
@@ -23,6 +24,7 @@ class ArticleRepository
         
         return $category; 
     }
+
     public function byCategoryWithArticles($category)
     {
         return Category::where('category',$category)->first();
@@ -31,18 +33,19 @@ class ArticleRepository
 
     public function getArticle()
     {
-        //published 是scopePublised方法
+        // Render home.blade for displaying all articles
         return Article::paginate(15);
     }
 
     public function getCellInfo($page)
     {
-        return Article::select(['title','created_at'])->offset($page)->limit(8)->get();
+        return Article::select(['title','created_at'])->offset($page)->limit(10)->get();
     }
 
     public function getContentsWithPaginationByItem($item)
     {
-        // dd(Article::where('category', 'like', $item)->get());
+        // Return the specified item content with pagination
+
         $results = Article::where('category', $item)->latest()->paginate(10);
         // response needs title, time and pagination data, missing title and time, so add
         $response = [
@@ -61,6 +64,8 @@ class ArticleRepository
     
     public function checkCategory($category, $method)
     {
+        // Before changing Article Model, Update Category Model
+
         switch($method){
             case 'store';
                     $is_set = Category::where('title', $category)->first();
@@ -83,6 +88,8 @@ class ArticleRepository
 
     public function findItems()
     {
+        // Return All categories list
+
         $categories = Article::select('category')->distinct()->get();
         // $categories = json_encode($categories);
         $response = [

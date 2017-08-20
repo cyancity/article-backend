@@ -9,9 +9,10 @@ use App\Http\Requests\StoreArticleRequest;
 
 class ArticleController extends Controller
 {
+
     public function __construct(ArticleRepository $articleRepository)
     {
-        $this->middleware('auth')->except(['show','getContents','getItems']);
+        $this->middleware('auth')->except(['show','getContents','getItems','update']);
         $this->articleRepository = $articleRepository;
     }
     /**
@@ -87,10 +88,10 @@ class ArticleController extends Controller
      */
     public function update(StoreArticleRequest $request, $id)
     {
+        dd($id);
         $method = 'update';
         $article = $this->articleRepository->byId($id);
         $checking = $this->articleRepository->checkCategory($request->input('category'),$method);
-        print_r($request->input('category'));
         if ($checking) {
             $article->update([
             'title' => $request->input('title'),

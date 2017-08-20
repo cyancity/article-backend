@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -31,16 +31,11 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name') }}
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
@@ -77,47 +72,6 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}"></script>
-
-    <script>
-        $(document).ready(function() {
-            function formatTopic (topic) {
-                return "<div class='select2-result-repository clearfix'>" +
-                "<div class='select2-result-repository__meta'>" +
-                "<div class='select2-result-repository__title'>" +
-                topic.name ? topic.name : "Laravel"   +
-                    "</div></div></div>";
-            }
-
-            function formatTopicSelection (topic) {
-                return topic.name || topic.text;
-            }
-
-            $(".js-example-placeholder-multiple").select2({
-                tags: true,
-                placeholder: '选择相关话题',
-                minimumInputLength: 2,
-                // ajax: {
-                //     url: '/api/topics',
-                //     dataType: 'json',
-                //     delay: 250,
-                //     data: function (params) {
-                //         return {
-                //             q: params.term
-                //         };
-                //     },
-                //     processResults: function (data, params) {
-                //         return {
-                //             results: data
-                //         };
-                //     },
-                //     cache: true
-                // },
-                templateResult: formatTopic,
-                templateSelection: formatTopicSelection,
-                escapeMarkup: function (markup) { return markup; },
-            });
-        });        
-    </script>
 
 </body>
 

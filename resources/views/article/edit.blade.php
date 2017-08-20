@@ -10,9 +10,9 @@
 
                 <div class="panel-body">
 
-                    <form action="/article/{{$article->id}}" method="post">
-                        {{ method_field('PATCH') }}
+                    <form action="/article/update/{{$article->id}}" method="post">
                         {!! csrf_field() !!}
+
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="title">标题</label>
                             <input id="title" value="{{old('title') ? old('title') : $article->title}} " type="text" name="title" class="form-control"
@@ -21,11 +21,22 @@
                                         <strong>{{ $errors->first('title') }}</strong>
                                     </span> @endif
                         </div>
+
+                        <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
+                            <label for="url">添加外链</label>
+                            <input id="url" value="{{old('url')}} " name="url" class="form-control"
+                                   placeholder=""> @if ($errors->has('url'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('url') }}</strong>
+                                    </span> @endif
+                        </div>
+
                         <div class="form-group">
-                                <select name="category[]" class="js-example-placeholder-multiple js-data-example-ajax form-control" multiple="multiple">
-                                        <option selected="selected">{{ $article->category }}</option>
-                                </select>
-                            </div>
+                            <select name="category[]" class="js-example-placeholder-multiple js-data-example-ajax form-control" multiple="multiple">
+                                    <option selected="selected">{{ $article->category }}</option>
+                            </select>
+                        </div>
+
                         <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                             <!-- 实例化编辑器 -->
                             <script type="text/javascript">
@@ -37,13 +48,13 @@
 
                             <!-- 编辑器容器 -->
                             <script id="container" name="content" type="text/plain">
-                                {{!! $article->content !!}} </script>
+                                {!! $article->content !!} </script>
                             @if ($errors->has('content'))
                             <span class="help-block">
                                         <strong>{{ $errors->first('content') }}</strong>
                                     </span> @endif
                         </div>
-                        <button class="btn btn-success pull-right" type="submit">修改问题</button>
+                        <button class="btn btn-success pull-right" type="submit">修改文章</button>
                     </form>
                 </div>
             </div>
@@ -51,45 +62,45 @@
     </div>
 </div>
 @section('js')
-<script>
-    $(document).ready(function() {
-            function formatCategory (Category) {
+    <script>
+        $(document).ready(function() {
+            function formatTopic (topic) {
                 return "<div class='select2-result-repository clearfix'>" +
                 "<div class='select2-result-repository__meta'>" +
                 "<div class='select2-result-repository__title'>" +
-                Category.name ? Category.name : "Laravel"   +
+                topic.name ? topic.name : "Laravel"   +
                     "</div></div></div>";
             }
 
-            function formatCategorySelection (Category) {
-                return Category.name || Category.text;
+            function formatTopicSelection (topic) {
+                return topic.name || topic.text;
             }
 
             $(".js-example-placeholder-multiple").select2({
                 tags: true,
                 placeholder: '选择相关话题',
                 minimumInputLength: 2,
-                ajax: {
-                    url: '/api/categories',
-                    dataType: 'json',
-                    delay: 250,
-                    data: function (params) {
-                        return {
-                            q: params.term
-                        };
-                    },
-                    processResults: function (data, params) {
-                        return {
-                            results: data
-                        };
-                    },
-                    cache: true
-                },
-                templateResult: formatCategory,
-                templateSelection: formatCategorySelection,
-                escapeMarkup: function (markup) { return markup; }
+                // ajax: {
+                //     url: '/api/topics',
+                //     dataType: 'json',
+                //     delay: 250,
+                //     data: function (params) {
+                //         return {
+                //             q: params.term
+                //         };
+                //     },
+                //     processResults: function (data, params) {
+                //         return {
+                //             results: data
+                //         };
+                //     },
+                //     cache: true
+                // },
+                templateResult: formatTopic,
+                templateSelection: formatTopicSelection,
+                escapeMarkup: function (markup) { return markup; },
             });
         });
-</script>
+    </script>
 @endsection
 @endsection
