@@ -14,14 +14,23 @@ class CategoryRepository
 //            ->where('title','like','%'.$request->query('q').'%')
 //            ->get();
 //    }
-    public function getCategory()
+    public function byIdWithName($id)
     {
-        return Category::select(['title'])->get();
+        return Category::find($id);
     }
 
-    public function updateByName($name)
+    public function getCategory()
+    {
+        return Category::select(['title','id','url'])->get();
+    }
+
+    public function updateByName($old, $name)
     {
         // Update the specified category by the name
-       return Category::where('title', $name)->update(['title'=>$name]);
+        if (isset($name)) {
+            return Category::where('title', $old)->update(['title' => $name]);
+        } else {
+            abort('500', 'Update error');
+        }
     }
 }

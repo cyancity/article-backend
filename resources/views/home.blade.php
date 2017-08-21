@@ -38,7 +38,7 @@
                                 <th scope="row">{{ $article->id }}</th>
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->category }}</td>
-                                <td>{{ $article->has('url') ? $article->url : '无' }}</td>
+                                <td>{{ isset($article->url) ? $article->url : '无' }}</td>
                                 <td>{{ $article->created_at }}</td>
                                 <td>{{ $article->updated_at }}</td>
                                 <td>

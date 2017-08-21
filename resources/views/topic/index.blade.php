@@ -23,31 +23,25 @@
                             <thead>
                             <tr>
                                 <th>编号</th>
-                                <td>分类</td>
-                                <td>子分类</td>
-                                <td>是否隐藏</td>
-                                <td>发布时间</td>
-                                <td>最后修改时间</td>
-                                <td style="120">操作</td>
+                                <td>主题</td>
+                                <td>外链</td>
+                                <td>操作</td>
                             </tr>
                             </thead>
 
                             <tbody>
-                            @foreach($articles as $article)
+                                @foreach($topics as $topic)
                                 <tr>
-                                    <th>{{ $article->id }}</th>
-                                    <td>{{ $article->title }}</td>
-                                    <td>{{ $article->category }}</td>
-                                    <td>{{ $article->is_hidden }}</td>
-                                    <td>{{ $article->created_at }}</td>
-                                    <td>{{ $article->updated_at }}</td>
+                                    <th>{{ $topic->id }}</th>
+                                    <td>{{ $topic->topic }}</td>
+                                    <td>{{ $topic->url }}</td>
+                                    <td>{{ $topic->is_hidden }}</td>
                                     <td>
-                                        <a href="/article/{{$article->id}}">详情</a>
-                                        <a href="/article/{{$article->id}}/edit">修改</a>
-                                        <a href="/article/delete/{{$article->id}}">删除</a>
+                                        <a href="/topic/edit/{{$topic->id}}">修改</a>
+                                        <a href="/topic/destory/{{$topic->id}}">删除</a>
                                     </td>
                                 </tr>
-                            @endforeach
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

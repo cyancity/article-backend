@@ -1,4 +1,5 @@
 @extends('layouts.app') @section('content')@include('vendor.ueditor.assets')
+
 <div class="container">
 <div class="row">
     @include('layouts.sidebar')
@@ -22,19 +23,10 @@
                                     </span> @endif
                     </div>
 
-                    <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                        <label for="url">添加外链</label>
-                        <input id="url" value="{{old('url')}} " name="url" class="form-control"
-                            placeholder=""> @if ($errors->has('url'))
-                        <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
-                                    </span> @endif
-                    </div>
-
                     <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
-                        <select name="category" class="js-example-placeholder-multiple js-data-example-ajax form-control" multiple="multiple">
-                        </select>
-                        {{ $errors->has('content') ? ' has-error' : '' }}
+                        <label for="category">添加分类</label>
+                        <input id="category" value="{{old('category')}}" type="text" name="category" class="form-control">
+                        <strong>{{ $errors->first('category') }}</strong>
                     </div>
 
                     <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
@@ -63,46 +55,4 @@
     
 </div>
 </div>
-@section('js')
-    <script>
-        $(document).ready(function() {
-            function formatTopic (topic) {
-                return "<div class='select2-result-repository clearfix'>" +
-                "<div class='select2-result-repository__meta'>" +
-                "<div class='select2-result-repository__title'>" +
-                topic.name ? topic.name : "Laravel"   +
-                    "</div></div></div>";
-            }
-
-            function formatTopicSelection (topic) {
-                return topic.name || topic.text;
-            }
-
-            $(".js-example-placeholder-multiple").select2({
-                tags: true,
-                placeholder: '选择相关话题',
-                minimumInputLength: 2,
-                // ajax: {
-                //     url: '/api/topics',
-                //     dataType: 'json',
-                //     delay: 250,
-                //     data: function (params) {
-                //         return {
-                //             q: params.term
-                //         };
-                //     },
-                //     processResults: function (data, params) {
-                //         return {
-                //             results: data
-                //         };
-                //     },
-                //     cache: true
-                // },
-                templateResult: formatTopic,
-                templateSelection: formatTopicSelection,
-                escapeMarkup: function (markup) { return markup; },
-            });
-        });
-    </script>
-@endsection
 @endsection

@@ -88,14 +88,13 @@ class ArticleController extends Controller
      */
     public function update(StoreArticleRequest $request, $id)
     {
-        dd($id);
         $method = 'update';
         $article = $this->articleRepository->byId($id);
         $checking = $this->articleRepository->checkCategory($request->input('category'),$method);
         if ($checking) {
             $article->update([
             'title' => $request->input('title'),
-            'category' => implode($request->input('category')),
+            'category' => $request->input('category'),
             'content' => $request->input('content')
             ]);
         }

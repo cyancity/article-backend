@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="list-group" style="width: 100%;overflow:scroll;-webkit-overflow-scrolling:touch;">
+    <ul class="list-inline">
       <ul class="nav nav-tabs">
         <li class="active" v-for="(item,index) in tabItems">
           <a data-toggle="tab" href="" @click="getContents(item.category)">
@@ -22,7 +22,7 @@
     </ul>
 
     <nav>
-      <ul class="pagination">
+      <ul class="pagination pull-right">
         <li v-if="pagination.current_page > 1">
           <a href="#" aria-label="Previous" @click.prevent="changePage(pagination.current_page - 1)">
             <span aria-hidden="true">&laquo;</span>
@@ -114,6 +114,7 @@ export default {
     changePage: function(page) {
       this.pagination.current_page = page
       this.getContents(page)
+      window.location.hash = '12'
     },
     getItems () {
       axios.get('api/items')

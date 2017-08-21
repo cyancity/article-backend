@@ -34,7 +34,13 @@ class ArticleRepository
     public function getArticle()
     {
         // Render home.blade for displaying all articles
-        return Article::paginate(15);
+        return Article::paginate(10);
+    }
+
+    public function getArticleByTabs($tabs)
+    {
+        // Render home.blade for displaying specified articles
+        return Article::where('category', $tabs)->paginate(10);
     }
 
     public function getCellInfo($page)
@@ -89,12 +95,17 @@ class ArticleRepository
     public function findItems()
     {
         // Return All categories list
-
         $categories = Article::select('category')->distinct()->get();
         // $categories = json_encode($categories);
         $response = [
             'category' => $categories
         ];
         return $response;
+    }
+
+    public function getItems()
+    {
+        return $categories = Article::select('category')->distinct()->get();
+
     }
 }

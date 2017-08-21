@@ -21,20 +21,11 @@
                                         <strong>{{ $errors->first('title') }}</strong>
                                     </span> @endif
                         </div>
-
-                        <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
-                            <label for="url">添加外链</label>
-                            <input id="url" value="{{old('url')}} " name="url" class="form-control"
-                                   placeholder=""> @if ($errors->has('url'))
-                                <span class="help-block">
-                                        <strong>{{ $errors->first('url') }}</strong>
-                                    </span> @endif
-                        </div>
-
-                        <div class="form-group">
-                            <select name="category[]" class="js-example-placeholder-multiple js-data-example-ajax form-control" multiple="multiple">
-                                    <option selected="selected">{{ $article->category }}</option>
-                            </select>
+                        
+                        <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+                            <label for="category">修改分类</label>
+                            <input id="category" value="{{old('category')}}" type="text" name="category" class="form-control" placeholder="添加新的分类名">
+                            <strong>{{ $errors->first('category') }}</strong>
                         </div>
 
                         <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">

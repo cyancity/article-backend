@@ -25,7 +25,7 @@
           <button type="button" class="navbar-toggle show pull-left" data-target="sidebar">
                     <span class="sr-only">展开侧栏</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </button>
-          <a class="navbar-brand" href="index.html">News</a>
+          <a class="navbar-brand" href="/news">News</a>
         </div>
       </div>
     </nav>
