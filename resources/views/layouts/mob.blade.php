@@ -13,9 +13,9 @@
 
   <!-- Styles -->
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-   <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">   
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
-</head>
+  </head>
 
 <body>
   <div id="mob">

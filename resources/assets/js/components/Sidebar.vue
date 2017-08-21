@@ -4,7 +4,7 @@
               <li class="has-sub">
                   <a href="javascript:void(0);"><span>新闻分类</span><i class="fa fa-caret-right fa-fw pull-right"></i></a>
                   <ul class="sub-menu" v-for="(item, index) in tabItems" :key="index">
-                      <li><a :href="'/article/tab/' + item.id"><i class="fa fa-circle-o fa-fw"></i>{{item.category}}</a></li>
+                      <li><a :href="'/news/tabs/' + item.category"><i class="fa fa-circle-o fa-fw"></i>{{item.category}}</a></li>
                   </ul>
               </li>
           </ul>
@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     getItems () {
-      axios.get('api/items')
+      axios.get('/api/items')
       .then((res) => {
         this.tabItems = res.data.category
       })

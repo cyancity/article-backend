@@ -1783,7 +1783,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getItems: function getItems() {
       var _this = this;
 
-      axios.get('api/items').then(function (res) {
+      axios.get('/api/items').then(function (res) {
         _this.tabItems = res.data.category;
       });
     }
@@ -31985,7 +31985,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "sub-menu"
     }, [_c('li', [_c('a', {
       attrs: {
-        "href": '/article/tab/' + item.id
+        "href": '/news/tabs/' + item.category
       }
     }, [_c('i', {
       staticClass: "fa fa-circle-o fa-fw"

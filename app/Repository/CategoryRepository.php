@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Article;
 use App\Category;
 
 
@@ -28,7 +29,9 @@ class CategoryRepository
     {
         // Update the specified category by the name
         if (isset($name)) {
-            return Category::where('title', $old)->update(['title' => $name]);
+            Category::where('title', $old)->update(['title' => $name]);
+            Article::where('category', $old)->update(['category' => $name]);
+            return;
         } else {
             abort('500', 'Update error');
         }
