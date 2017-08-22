@@ -1,6 +1,6 @@
 <template>
-    <div class="sidebar">
-          <ul class="nav">
+    <div class="nav">
+          <ul class="warpper">
               <li class="has-sub">
                   <a href="javascript:void(0);"><span>新闻分类</span><i class="fa fa-caret-right fa-fw pull-right"></i></a>
                   <ul class="sub-menu" v-for="(item, index) in tabItems" :key="index">
@@ -8,6 +8,7 @@
                   </ul>
               </li>
           </ul>
+
     </div>
 </template>
 

@@ -6,7 +6,6 @@
  */
 
 require('./bootstrap');
-require('./select2.min.js');
 
 // window.Vue = require('vue');
 
