@@ -13,7 +13,7 @@
 
 Auth::routes();
 Route::get('/', 'ArticleController@index');
-Route::get('/home', 'ArticleController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 Route::resource('article','ArticleController');
 Route::post('article/edit','ArticleController@edit');
 Route::any('article/update/{id}','ArticleController@update');
@@ -28,3 +28,4 @@ Route::post('/topic','TopicController@store');
 Route::get('/topic/create','TopicController@create');
 Route::get('/topic/destory/{id}','TopicController@destoty');
 Route::get('/news/tabs/{tabs}','NewsController@tabs');
+Route::get('/news/show/{id}','NewsController@show');

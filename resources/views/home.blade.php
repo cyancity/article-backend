@@ -51,7 +51,6 @@
                         </tbody>
                     </table>
                 </div>
-                <pagination></pagination>
                 <div class="pull-right">
                     {{ $articles->render() }}
                 </div>

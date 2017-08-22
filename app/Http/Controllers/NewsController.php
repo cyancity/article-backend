@@ -29,6 +29,7 @@ class NewsController extends Controller
 
     public function show($id)
     {
-        echo $id;
+        $article = $this->articleRepository->byId($id);
+        return view('news.show', compact('article'));
     }
 }

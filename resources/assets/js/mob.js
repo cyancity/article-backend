@@ -1,4 +1,5 @@
-// require('./bootstrap');
+require('./bootstrap');
+
 // import VueRouter from 'vue-router';
 // import routes from './routes'
 // window.Vue = require('vue');
@@ -22,9 +23,5 @@
 //     el: '#mob'
 // });
 
-// require('./default')
-// require('./scrolltopcontrol')
-//
-// require('./pace.min')
-//
-// require('./jquery.extend')
+require('./custom');
+
