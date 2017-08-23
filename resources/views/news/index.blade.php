@@ -1,11 +1,14 @@
 @extends('layouts.mob') @section('content')
-    <img src="img/zjgs-banner.jpg" alt="">
-
     <div class="container-fluid all">
         {{--<sidebar></sidebar>--}}
 
-        <div>
+        <div class="maincontent row" id="pagination">
+            <div style="padding-top: -8px;">
+                <img src="http://img.jswmw.com/home/upLoad/slide/month_1209/201209251442427983.jpg" alt="">
+            </div>
             <div class="col-sm-12">
+
+
                 <div>
                     <ul class="list-group">
                         <ul class="nav nav-tabs">
