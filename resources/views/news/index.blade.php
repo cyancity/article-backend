@@ -3,10 +3,11 @@
         {{--<sidebar></sidebar>--}}
 
         <div class="maincontent row" id="pagination">
+            <div style="padding-top: -8px;">
+                <img src="http://img.jswmw.com/home/upLoad/slide/month_1209/201209251442427983.jpg" alt="">
+            </div>
             <div class="col-sm-12">
-                <div style="padding-top: 0;">
-                    <img src="http://img.jswmw.com/home/upLoad/slide/month_1209/201209251442427983.jpg" alt="" style="padding-top: 0;">
-                </div>
+
 
                 <div>
                     <ul class="list-group">

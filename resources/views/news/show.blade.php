@@ -8,10 +8,10 @@
             <div class="col-sm-12">
                 <article>
                     <h1>{{ $article->title }}</h1>
-                    <h5>{{$article->category}}</h5>
+                    <h5 class="topic">{{$article->category}}</h5>
                     <hr>
                 </article>
-                <div class="content">
+                <div class="content" style="margin-left:-15px; margin-right: -15px">
                     {!! $article->content !!}
                 </div>
             </div>
