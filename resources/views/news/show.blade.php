@@ -6,16 +6,13 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        {{ $article->title }}
-                        <br>
-                        <a class="topic"> {{$article->category}} </a>
-                    </div>
-
-                    <div class="panel-body">
-                        {!! $article->content !!}
-                    </div>
+                <article>
+                    <h1>{{ $article->title }}</h1>
+                    <h5>{{$article->category}}</h5>
+                    <hr>
+                </article>
+                <div class="content">
+                    {!! $article->content !!}
                 </div>
             </div>
         </div>
