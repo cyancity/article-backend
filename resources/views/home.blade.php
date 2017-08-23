@@ -42,7 +42,8 @@
                                 <td>{{ $article->created_at }}</td>
                                 <td>{{ $article->updated_at }}</td>
                                 <td>
-                                    <a href="/article/{{$article->id}}">详情</a>
+                                    <a href="/article/{{$article->id}}">后台查看</a>
+                                    <a href="/news/show/{{$article->id}}">前台查看</a>
                                     <a href="/article/{{$article->id}}/edit">修改</a>
                                     <a href="/article/delete/{{$article->id}}">删除</a>
                                 </td>
