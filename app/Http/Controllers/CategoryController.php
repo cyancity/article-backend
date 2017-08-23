@@ -17,6 +17,16 @@ class CategoryController extends Controller
 
     }
 
+    public function list()
+    {
+        
+    }
+
+    public function add()
+    {
+        return view('category.add');
+    }
+    
     public function index()
     {
         $categories = $this->categoryRepository->getCategory();

@@ -15,6 +15,14 @@ class CategoryRepository
 //            ->where('title','like','%'.$request->query('q').'%')
 //            ->get();
 //    }
+    public function addCategory($data)
+    {
+       if (Category::create($data)) {
+           return true;
+       }
+       return false;
+    }
+
     public function byIdWithName($id)
     {
         return Category::find($id);

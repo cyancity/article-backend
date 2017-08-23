@@ -29,3 +29,4 @@ Route::get('/topic/create','TopicController@create');
 Route::get('/topic/destory/{id}','TopicController@destoty');
 Route::get('/news/tabs/{tabs}','NewsController@tabs');
 Route::get('/news/show/{id}','NewsController@show');
+Route::get('/category/','CategoryController@add');

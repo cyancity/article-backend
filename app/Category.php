@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     
-    protected $fillable = ['title', 'article_count'];
+    protected $fillable = ['title', 'article_count','pid'];
 
     public function article()
     {

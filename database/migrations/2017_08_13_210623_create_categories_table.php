@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('title')->unique();
             $table->string('topic')->nullable();
+            $table->integer('pid')->nullable();
             $table->string('url')->nullable();
             $table->integer('article_count')->default(0);
             $table->timestamps();
