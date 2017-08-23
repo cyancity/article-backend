@@ -29873,6 +29873,7 @@ window._ = __webpack_require__("./node_modules/_lodash@4.17.4@lodash/lodash.js")
  */
 
 window.$ = window.jQuery = __webpack_require__("./node_modules/_jquery@3.2.1@jquery/dist/jquery.js");
+
 __webpack_require__("./node_modules/_bootstrap-sass@3.3.7@bootstrap-sass/assets/javascripts/bootstrap.js");
 
 /**
