@@ -7,10 +7,6 @@
                 <a href="{{ url('article/create') }}" class="list-group-item 
                                     {{ Request::getPathInfo() == '/article/create' ? 'active' : '' }}
                                 ">添加新闻</a>
-                <a href="{{ url('/topic') }}" class="list-group-item
-                                    {{ Request::getPathInfo() == '/topic' ? 'active' : '' }}
-                                ">查看主题
-                </a>
                 <a href="{{ url('/category/create') }}" class="list-group-item
                                     {{ Request::getPathInfo() == '/category/create' ? 'active' : '' }}
                                 ">添加分类
