@@ -26,18 +26,15 @@ class StoreArticleRequest extends FormRequest
         return [
             'title' => 'required|min:2',
             'pid' => 'required',
-            'category' => 'required|min:2',
         ];
     }
 
     public function messages()
     {
         return [
-            'title.required' => '标题必填',
-            'title.min' => '标题最少为2个字符',
+            'title.required' => '分类名必填',
+            'title.min' => '分类名最少为2个字符',
             'pid.required' => '上级分类必填',
-            'category.required' => '分类必填',
-            'category.min' => '分类最少为2个字符',
         ];
     }
 }

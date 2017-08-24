@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Repository\CategoryRepository;
 use Illuminate\Http\Request;
 use App\Repository\ArticleRepository;
 use App\Http\Requests\StoreArticleRequest;
@@ -23,10 +24,8 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = $this->articleRepository->getArticle();
-        
         // $category = $this->articleRepository->getCategory($articles['category']);
-        
-        return view('home',['articles' => $articles]);
+        return view('home',compact('articles'));
     }
 
     /**
@@ -35,8 +34,10 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {  
-        return view('article.make');
+    {
+        $categoryRepository = new CategoryRepository();
+        $lists = $categoryRepository->getOptions();
+        return view('article.make',compact('lists'));
     }
  
 

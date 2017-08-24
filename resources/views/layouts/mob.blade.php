@@ -16,7 +16,7 @@
 
 <body>
   <div id="mob">
-    <nav class="navbar navbar-inverse" style="    margin-bottom: 0px;">
+    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
@@ -29,39 +29,24 @@
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">工商动态 <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">新闻咨询</a></li>
-                <li class="divider"></li>
-                <li><a href="#">通知公告</a></li>
-                <li class="divider"></li>
-                <li><a href="#">工商大数据</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">工商服务 <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">信用查询</a></li>
-                <li class="divider"></li>
-                <li><a href="#">办事指南</a></li>
-                <li class="divider"></li>
-                <li><a href="#">公众服务</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">消费维权 <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">投诉举报</a></li>
-                <li class="divider"></li>
-                <li><a href="#">维权咨询</a></li>
-                <li class="divider"></li>
-                <li><a href="#">消费警示</a></li>
-              </ul>
-            </li>
-          </ul>
-
+            <ul class="nav navbar-nav">
+              @foreach($titles as $title)
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{$title['title']}} <span class="caret"></span></a>
+                    {{$title['title']}}
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <a href="fsda">
+                        {{--axios异步获取--}}
+                      </a>
+                    </li>
+                    <li class="divider"></li>
+                  </ul>
+                </li>
+              @endforeach
+            </ul>
         </div>
       </div>
     </nav>

@@ -19,20 +19,22 @@
                             </button>
                         </div>
                     @endif
-                        <form action="" class="form-control">
-                            <div class="dropdown show">
-                                <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Dropdown link
-                                </a>
 
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                            <button class="btn btn-success">提交</button>
-                        </form>
+                    <form action="/category/store" method="post" class="form-group">
+                        {!! csrf_field() !!}
+
+                        <div class="form-group">
+                            <label for="sel1">Select list:</label>
+                            <select class="form-control" id="sel1" name="pid">
+                                @foreach($lists as $id => $list )
+                                <option value="{{$id}}">{{$list}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <input type="text" class="form-control" name="title">
+
+                        <button class="btn btn-success pull-right">提交</button>
+                    </form>
 
                 </div>
             </div>

@@ -26,7 +26,7 @@ class StoreArticleRequest extends FormRequest
         return [
             'title' => 'required|min:4|max:60',
             'content' => 'required|min:30',
-            'category' => 'required|min:2',
+            'category' => 'required',
         ];
     }
 
@@ -39,7 +39,6 @@ class StoreArticleRequest extends FormRequest
             'content.required' => '内容必填',
             'content.min' => '内容最少为30个字符',
             'category.required' => '分类必填',
-            'category.min' => '分类最少为4个字符',
         ];
     }
 }

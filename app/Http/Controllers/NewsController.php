@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Repository\CategoryRepository;
 use App\Repository\ArticleRepository;
 
 class NewsController extends Controller
@@ -14,10 +14,12 @@ class NewsController extends Controller
 
     public function index()
     {
-
         $items = $this->articleRepository->getItems();
         $contents = $this->articleRepository->getArticle();
-        return view('news.index',compact('contents','items'));
+        $categoryRepository = new CategoryRepository();
+        $titles = $categoryRepository->getTabsById(0);
+        $subTitles = $categoryRepository->getTabsById(1);
+        return view('news.index',compact('contents','items','titles','subTitles'));
     }
 
     public function tabs($tabs)
@@ -29,7 +31,9 @@ class NewsController extends Controller
 
     public function show($id)
     {
+        $categoryRepository = new CategoryRepository();
+        $titles = $categoryRepository->getTabsById(0);
         $article = $this->articleRepository->byId($id);
-        return view('news.show', compact('article'));
+        return view('news.show', compact('article','titles'));
     }
 }
