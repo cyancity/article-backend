@@ -52,6 +52,7 @@ class ArticleController extends Controller
         $method = 'store';
         $category = $this->articleRepository->checkCategory($request->input('category'),$method);
         $data = $request->input();
+        $data['cate_name'] = CategoryRepository::findCategoryById($data['category']);
         $article = $this->articleRepository->create($data);
         // $article->category()->associate($category);
         return redirect()->route('article.show', [$article->id]);

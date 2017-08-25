@@ -23133,9 +23133,7 @@ UE.plugins['catchremoteimage'] = function () {
 
     /* 设置默认值 */
     if (me.options.catchRemoteImageEnable === false) return;
-    me.setOpt({
-        catchRemoteImageEnable: false
-    });
+
 
     me.addListener("afterpaste", function () {
         me.fireEvent("catchRemoteImage");
@@ -23183,7 +23181,7 @@ UE.plugins['catchremoteimage'] = function () {
                     } catch (e) {
                         return;
                     }
-
+                    console.log(info);
                     /* 获取源路径和新路径 */
                     var i, j, ci, cj, oldSrc, newSrc, list = info.list;
 

@@ -90,7 +90,9 @@ class CategoryRepository
     }
     public static function findCategoryById($id)
     {
-        return Category::select('title')->where('id',$id)->get()->toArray();
+        $category = Category::select('title')->where('id',$id)->get()->toArray();
+        $category = implode(current($category));
+        return $category;
     }
 
     public function updateByName($old, $name)
