@@ -18,7 +18,6 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->integer('category');
-            $table->string('cate_name');
             $table->string('main_pic')->nullable();
             $table->string('is_hidden',8)->default('F');
             $table->timestamps();

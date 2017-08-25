@@ -45,7 +45,6 @@
                     </li>
                     <li class="divider"></li>
                   </ul>
-                 <dropdown-menu></dropdown-menu>
                 </li>
               @endforeach
             </ul>

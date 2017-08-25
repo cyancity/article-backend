@@ -67,30 +67,6 @@ class ArticleRepository
         ];
         return $response;
     }
-    
-    public function checkCategory($category, $method)
-    {
-        // Before changing Article Model, Update Category Model
-
-        switch($method){
-            case 'store';
-                    $is_set = Category::where('title', $category)->first();
-                    if (isset($is_set)) {
-                        Category::where('title',$category)->increment('article_count');
-                    } else {
-                        Category::create(['title' => $category, 'article_count' => 1]);
-                    }
-                    break;
-            case 'update';
-                    $is_set = Category::where('title', $category)->first();
-                    if (!isset($is_set)) {
-                        Category::create(['title' => $category, 'article_count' => 1]);
-                    }
-                    break;
-        }
-        // 逻辑似乎可以再优化一下
-        return true;
-    }
 
     public function findItems()
     {

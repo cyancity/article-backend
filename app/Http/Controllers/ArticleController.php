@@ -49,10 +49,8 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-        $method = 'store';
-        $category = $this->articleRepository->checkCategory($request->input('category'),$method);
         $data = $request->input();
-        $data['cate_name'] = CategoryRepository::findCategoryById($data['category']);
+        dd($data);
         $article = $this->articleRepository->create($data);
         // $article->category()->associate($category);
         return redirect()->route('article.show', [$article->id]);
@@ -90,16 +88,12 @@ class ArticleController extends Controller
      */
     public function update(StoreArticleRequest $request, $id)
     {
-        $method = 'update';
         $article = $this->articleRepository->byId($id);
-        $checking = $this->articleRepository->checkCategory($request->input('category'),$method);
-        if ($checking) {
-            $article->update([
-            'title' => $request->input('title'),
-            'category' => $request->input('category'),
-            'content' => $request->input('content')
-            ]);
-        }
+        $article->update([
+        'title' => $request->input('title'),
+        'category' => $request->input('category'),
+        'content' => $request->input('content')
+        ]);
         return redirect()->route('article.show', [$article->id])->with('success','修改成功-'.$id);
     }
 

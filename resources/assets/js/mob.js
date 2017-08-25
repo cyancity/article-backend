@@ -2,7 +2,7 @@ require('./bootstrap');
 
 // import VueRouter from 'vue-router';
 // import routes from './routes'
-window.Vue = require('vue');
+// window.Vue = require('vue');
 // Vue.use(VueRouter)
 
 // const router = new VueRouter({
@@ -18,11 +18,11 @@ window.Vue = require('vue');
 //
 // Vue.component('pagination', require('./components/Pagination.vue'));
 // Vue.component('sidebar', require('./components/Sidebar.vue'));
-Vue.component('dropdown-menu',require('./components/DropdownMenu.vue'));
-
-const app = new Vue({
-    el: '#mob'
-});
+// Vue.component('dropdown-menu',require('./components/DropdownMenu.vue'));
+//
+// const app = new Vue({
+//     el: '#mob'
+// });
 
 require('./custom');
 
