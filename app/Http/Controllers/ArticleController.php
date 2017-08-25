@@ -50,7 +50,6 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {
         $data = $request->input();
-        dd($data);
         $article = $this->articleRepository->create($data);
         // $article->category()->associate($category);
         return redirect()->route('article.show', [$article->id]);
