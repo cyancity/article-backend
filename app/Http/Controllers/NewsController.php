@@ -36,4 +36,11 @@ class NewsController extends Controller
         $article = $this->articleRepository->byId($id);
         return view('news.show', compact('article','titles'));
     }
+
+    public function sub($pid)
+    {
+        $categoryRepository = new CategoryRepository();
+        $subTitles = $categoryRepository->getTabsById($pid);
+        return response()->json($subTitles);
+    }
 }
