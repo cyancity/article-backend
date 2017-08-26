@@ -9,29 +9,24 @@ window.Vue = require('vue')
  */
 //
 Vue.component('pagination', require('./components/Pagination.vue'));
-Vue.component('dropdown-menu',require('./components/DropdownMenu.vue'));
+Vue.component('dropdown',require('./components/DropdownMenu.vue'));
 Vue.component('tab', require('./components/Tab.vue'));
 
 import VueRouter from 'vue-router'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
-    {path: '/news',component: tab,
-        children: [
-            {
-                path: '/:category', component: pagination
-            }
-        ]},
-]
+    {path: '/news',component: require('./components/Pagination.vue')}
+];
 
 const router = new VueRouter({
     routes
-})
+});
 
 const app = new Vue({
-    el: '#mob',
-    router
+    router,
+    el: '#mob'
 });
 
 require('./custom');

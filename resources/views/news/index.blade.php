@@ -5,7 +5,9 @@
                 <img src="http://img.jswmw.com/home/upLoad/slide/month_1209/201209251442427983.jpg" alt="">
             </div>
         </div>
-        <router-view></router-view>
     </div>
+    <router-view></router-view>
+    <tab></tab>
+
     {{--<footer>镇江民生工商</footer>--}}
 @endsection
