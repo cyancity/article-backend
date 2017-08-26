@@ -1,20 +1,6 @@
 require('./bootstrap');
 
-// import VueRouter from 'vue-router'
 window.Vue = require('vue')
-Vue.use(VueRouter)
-
-const routes = [
-    {path: '/news/',component: tab , children: [
-        {
-            path: '/:category', component: pagination
-        }
-    ]},
-]
-const router = new VueRouter({
-    routes
-})
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -23,13 +9,29 @@ const router = new VueRouter({
  */
 //
 Vue.component('pagination', require('./components/Pagination.vue'));
-Vue.component('sidebar', require('./components/Sidebar.vue'));
 Vue.component('dropdown-menu',require('./components/DropdownMenu.vue'));
-Vue.component('tab',require('./components/Tab.vue'));
+Vue.component('tab', require('./components/Tab.vue'));
+
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+
+const routes = [
+    {path: '/news',component: tab,
+        children: [
+            {
+                path: '/:category', component: pagination
+            }
+        ]},
+]
+
+const router = new VueRouter({
+    routes
+})
 
 const app = new Vue({
     el: '#mob',
-    routes
+    router
 });
 
 require('./custom');
