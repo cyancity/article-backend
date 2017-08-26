@@ -55,6 +55,16 @@ class CategoryController extends Controller
         $this->categoryRepository->updateByName($old, $name);
         $categories = $this->categoryRepository->getCategory();
         return view('category.index',compact('categories'))->with('success',$name.'-修改成功');
+    }
 
+    public function getNav()
+    {
+        $first = $this->categoryRepository->getFirstCategory();
+        $sub = $this->categoryRepository->getSubCategory();
+        $response = [
+            'first' => $first,
+            'sub' => $sub
+        ];
+        return $response;
     }
 }

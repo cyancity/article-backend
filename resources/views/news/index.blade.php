@@ -6,8 +6,9 @@
             </div>
         </div>
     </div>
+    <pagination></pagination>
     <router-view></router-view>
-    <tab></tab>
+
 
     {{--<footer>镇江民生工商</footer>--}}
 @endsection

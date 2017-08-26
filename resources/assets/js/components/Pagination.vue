@@ -1,5 +1,15 @@
 <template>
   <div>
+    <ul class="list-inline">
+      <ul class="nav nav-tabs">
+        <li class="active" v-for="(item,index) in tabItems" :key="index">
+          <router-link :to="item.category" @click="getContents">
+            {{item.category}}
+          </router-link>
+        </li>
+      </ul>
+    </ul>
+
     <ul class="list-group">
       <li class="list-group-item" v-for="(content, index) in contents" :key="index">
         <a :href="'/article/' + content.id">
@@ -46,8 +56,15 @@ export default {
       },
       offset: 4,
       contents: [],
+      items: [],
+      itemsCount: 1,
+      defaultItem: '1',
+      tabItems: {},
     }
   },
+    created () {
+        this.getItems()
+    },
   // beforeMount () {
   //   this.getItems()
   // },
@@ -99,7 +116,14 @@ export default {
       this.pagination.current_page = page
       this.getContents(page)
       window.location.hash = '12'
-    }
+    },
+      getItems () {
+          axios.get('api/items')
+              .then((res) => {
+                  console.log(res)
+                  this.tabItems = res.data.category
+              })
+      }
   }
 }
 </script>

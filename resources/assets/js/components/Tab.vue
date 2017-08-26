@@ -1,14 +1,24 @@
 <template>
     <div>
-        <ul class="list-inline">
-          <ul class="nav nav-tabs">
-              <li class="active" v-for="(item,index) in tabItems" :key="index">
-              <a data-toggle="tab" href="" @click="getContents(item.category)">
-                  {{item.category}}
-              </a>
-              </li>
-          </ul>
-        </ul>
+        <li class="dropdown" v-for="">
+            <a v-if="" :href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                {{ }}
+                <span class="caret"></span>
+            </a>
+            <a v-else class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                {{ }}
+                <span class="caret"></span>
+            </a>
+
+            <ul class="dropdown-menu" role="menu" v-for="">
+                <li>
+                    <router-link :to="'/news/' + ">
+                        {{ }}
+                    </router-link>
+                </li>
+                <li class="divider"></li>
+            </ul>
+        </li>
     </div>
 </template>
 
@@ -16,21 +26,20 @@
 export default {
   data () {
     return {
-      items: [],
-      itemsCount: 1,
-      defaultItem: '1',
-      tabItems: {},
+        first: [],
+        sub: []
     }
   },
   created () {
-    this.getItems()
+    this.getNav()
   },
   methods: {
-    getItems () {
-      axios.get('api/items')
+    getNav () {
+      axios.get('api/nav')
       .then((res) => {
         console.log(res)
-        this.tabItems = res.data.category
+        this.first = res.data,first
+        this.sub = res.data,sub
       })
     }
   }
@@ -38,5 +47,5 @@ export default {
 </script>
 
 <style>
-  
+
 </style>

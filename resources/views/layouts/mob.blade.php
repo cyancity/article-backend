@@ -31,30 +31,36 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Title <span class="caret"></span></a>
-                Title
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                父级分类1
                 <span class="caret"></span>
               </a>
-
-              <ul class="dropdown-menu" role="menu">
+              <ul class="dropdown-menu" role="menu" v-for="">
                 <li>
-                  <a href="fsda">
-                    axios异步获取
-                  </a>
+                  <a href="">子分类1</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="">子分类2</a>
                 </li>
                 <li class="divider"></li>
               </ul>
-
-              <ul class="dropdown-menu" role="menu">
+            </li>
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                父级分类2
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu" v-for="">
                 <li>
-                  <a href="fsda">
-                    axios异步获取
-                  </a>
+                  <a href="">子分类1</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="">子分类2</a>
                 </li>
                 <li class="divider"></li>
               </ul>
-
             </li>
           </ul>
         </div>

@@ -25,15 +25,9 @@ class CategoryRepository
         return Category::find($id);
     }
 
-    public function getCategory()
-    {
-        return Category::select(['title','id','url'])->get();
-    }
-
     public function getData()
     {
         return $cates = Category::all()->toArray();
-
     }
 
     public function getTree($cates, $pid = 0)
@@ -104,5 +98,15 @@ class CategoryRepository
         } else {
             abort('500', 'Update error');
         }
+    }
+
+    public function getSubCategory()
+    {
+        return Category::where('pid','!=',0)->get();
+    }
+
+    public function getFirstCategory()
+    {
+        return Category::where('pid','=','0')->get();
     }
 }

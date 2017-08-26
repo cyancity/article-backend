@@ -19,5 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('contents', 'ArticleController@getContents');
 Route::get('items', 'ArticleController@getItems');
+Route::get('nav', 'CategoryController@getNav');
 
 Route::get('news/sub/{pid}', 'NewsController@sub');
