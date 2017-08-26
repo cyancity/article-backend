@@ -14,7 +14,8 @@ class NewsController extends Controller
 
     public function index()
     {
-        $items = $this->articleRepository->getItems();
+        $items = $this->articleRepository->getTabItems();
+        //
         $contents = $this->articleRepository->getArticle();
         $categoryRepository = new CategoryRepository();
         $titles = $categoryRepository->getTabsById(0);

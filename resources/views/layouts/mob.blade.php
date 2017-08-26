@@ -30,13 +30,11 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
-              @foreach($titles as $title)
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{$title['title']}} <span class="caret"></span></a>
                     {{$title['title']}}
                     <span class="caret"></span>
                   </a>
-
                   <ul class="dropdown-menu" role="menu">
                     <li>
                       <a href="fsda">
@@ -46,9 +44,8 @@
                     <li class="divider"></li>
                   </ul>
                 </li>
-              @endforeach
             </ul>
-        </div>
+        </div>*
       </div>
     </nav>
 

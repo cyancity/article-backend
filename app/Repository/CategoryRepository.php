@@ -100,7 +100,6 @@ class CategoryRepository
         // Update the specified category by the name
         if (isset($name)) {
             Category::where('title', $old)->update(['title' => $name]);
-            Article::where('cate_name', $old)->update(['cate_name' => $name]);
             return;
         } else {
             abort('500', 'Update error');
