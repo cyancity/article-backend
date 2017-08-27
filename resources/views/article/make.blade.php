@@ -8,7 +8,6 @@
             <div class="panel-heading">
                 新闻编辑器
             </div>
-            {{var_dump($errors)}}
             <div class="panel-body">
 
                 <form action="{{url('/article')}}" method="post">

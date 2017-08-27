@@ -1632,6 +1632,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -1706,16 +1715,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1729,24 +1728,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       },
       offset: 4,
       contents: [],
-      items: [],
       itemsCount: 1,
-      defaultItem: '1',
-      tabItems: {}
+      defaultItem: '4'
     };
   },
-  created: function created() {
-    this.getItems();
-  },
-
-  // beforeMount () {
-  //   this.getItems()
-  // },
-
   mounted: function mounted() {
     this.getContents(this.defaultItem);
   },
 
+  watch: {
+    '$route': 'getContents'
+  },
   computed: {
     isActived: function isActived() {
       return this.pagination.current_page;
@@ -1772,12 +1764,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   methods: {
-    getContents: function getContents(item) {
+    getContents: function getContents() {
       var _this = this;
 
+      var id = this.$route.params.id;
       axios.get('api/contents/', {
         params: {
-          item: item
+          id: id
         }
       }).then(function (res) {
         console.log(res.data);
@@ -1791,15 +1784,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     changePage: function changePage(page) {
       this.pagination.current_page = page;
       this.getContents(page);
-      window.location.hash = '12';
-    },
-    getItems: function getItems() {
-      var _this2 = this;
-
-      axios.get('api/items').then(function (res) {
-        console.log(res);
-        _this2.tabItems = res.data.category;
-      });
     }
   }
 });
@@ -1839,8 +1823,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      first: [],
-      sub: []
+      data: []
     };
   },
   created: function created() {
@@ -1852,11 +1835,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       axios.get('api/nav').then(function (res) {
-        console.log(res);
-        _this.first = res.data, first;
-        _this.sub = res.data, sub;
+        _this.data = res.data;
       });
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/_babel-loader@7.1.2@babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Tabbar.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      tabItems: []
+    };
+  },
+
+  methods: {
+    getItems: function getItems() {
+      var _this = this;
+
+      axios.get('api/tab-items').then(function (res) {
+        console.log(res);
+        _this.tabItems = res.data;
+      });
+    }
+  },
+  created: function created() {
+    this.getItems();
   }
 });
 
@@ -4254,7 +4279,7 @@ exports = module.exports = __webpack_require__("./node_modules/_css-loader@0.28.
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -4269,7 +4294,7 @@ exports = module.exports = __webpack_require__("./node_modules/_css-loader@0.28.
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -4284,7 +4309,22 @@ exports = module.exports = __webpack_require__("./node_modules/_css-loader@0.28.
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/_css-loader@0.28.5@css-loader/index.js!./node_modules/_vue-loader@12.2.2@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7f5a5f83\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Tabbar.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/_css-loader@0.28.5@css-loader/lib/css-base.js")(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32051,7 +32091,19 @@ module.exports = function normalizeComponent (
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('ul', {
+  return _c('div', [_c('li', {
+    staticClass: "dropdown"
+  }, [_c('a', {
+    staticClass: "dropdown-toggle",
+    attrs: {
+      "href": "",
+      "data-toggle": "dropdown",
+      "role": "button",
+      "aria-expanded": "false"
+    }
+  }, [_vm._v("\n      父级分类1\n      "), _c('span', {
+    staticClass: "caret"
+  })]), _vm._v(" "), _c('ul', {
     staticClass: "dropdown-menu",
     attrs: {
       "role": "menu"
@@ -32060,7 +32112,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": ""
     }
-  }, [_vm._v("\n        你哈啊\n      ")])])])])
+  }, [_vm._v("子分类1")])]), _vm._v(" "), _c('li', {
+    staticClass: "divider"
+  }), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("子分类2")])]), _vm._v(" "), _c('li', {
+    staticClass: "divider"
+  })])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -32075,7 +32135,46 @@ if (false) {
 /***/ "./node_modules/_vue-loader@12.2.2@vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-64271f40\",\"hasScoped\":false}!./node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Tab.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function(){},staticRenderFns:[]}
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', _vm._l((_vm.data), function(parent) {
+    return _c('li', {
+      staticClass: "dropdown"
+    }, [(parent.url) ? _c('a', {
+      staticClass: "dropdown-toggle",
+      attrs: {
+        "href": parent.url,
+        "data-toggle": "dropdown",
+        "role": "button",
+        "aria-expanded": "false"
+      }
+    }, [_vm._v("\n            " + _vm._s(parent.title) + "\n            "), _c('span', {
+      staticClass: "caret"
+    })]) : _c('a', {
+      staticClass: "dropdown-toggle",
+      attrs: {
+        "data-toggle": "dropdown",
+        "role": "button",
+        "aria-expanded": "false"
+      }
+    }, [_vm._v("\n            " + _vm._s(parent.title) + "\n            "), _c('span', {
+      staticClass: "caret"
+    })]), _vm._v(" "), _vm._l((parent.subItem), function(sub) {
+      return _c('ul', {
+        staticClass: "dropdown-menu",
+        attrs: {
+          "role": "menu"
+        }
+      }, [_c('li', [_c('router-link', {
+        attrs: {
+          "to": '/' + sub.id
+        }
+      }, [_vm._v("\n                    " + _vm._s(sub.title) + "\n                ")])], 1), _vm._v(" "), _c('li', {
+        staticClass: "divider"
+      })])
+    })], 2)
+  }))
+},staticRenderFns: []}
+module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -32090,22 +32189,6 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('ul', {
-    staticClass: "list-inline"
-  }, [_c('ul', {
-    staticClass: "nav nav-tabs"
-  }, _vm._l((_vm.tabItems), function(item, index) {
-    return _c('li', {
-      key: index,
-      staticClass: "active"
-    }, [_c('router-link', {
-      attrs: {
-        "to": item.category
-      },
-      on: {
-        "click": _vm.getContents
-      }
-    }, [_vm._v("\n          " + _vm._s(item.category) + "\n        ")])], 1)
-  }))]), _vm._v(" "), _c('ul', {
     staticClass: "list-group"
   }, _vm._l((_vm.contents), function(content, index) {
     return _c('li', {
@@ -32170,6 +32253,35 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-72f3f23f", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/_vue-loader@12.2.2@vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-7f5a5f83\",\"hasScoped\":false}!./node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Tabbar.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('ul', {
+    staticClass: "list-inline"
+  }, [_c('ul', {
+    staticClass: "nav nav-tabs"
+  }, _vm._l((_vm.tabItems), function(item, index) {
+    return _c('li', {
+      key: index,
+      staticClass: "active"
+    }, [_c('router-link', {
+      attrs: {
+        "to": '/' + item.id
+      }
+    }, [_vm._v("\n          " + _vm._s(item.title) + "\n        ")])], 1)
+  }))])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-7f5a5f83", module.exports)
   }
 }
 
@@ -34759,6 +34871,33 @@ if(false) {
  if(!content.locals) {
    module.hot.accept("!!../../../../node_modules/_css-loader@0.28.5@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.2@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-72f3f23f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=styles&index=0!./Pagination.vue", function() {
      var newContent = require("!!../../../../node_modules/_css-loader@0.28.5@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.2@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-72f3f23f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=styles&index=0!./Pagination.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./node_modules/_vue-style-loader@3.0.1@vue-style-loader/index.js!./node_modules/_css-loader@0.28.5@css-loader/index.js!./node_modules/_vue-loader@12.2.2@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7f5a5f83\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Tabbar.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/_css-loader@0.28.5@css-loader/index.js!./node_modules/_vue-loader@12.2.2@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7f5a5f83\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Tabbar.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/_vue-style-loader@3.0.1@vue-style-loader/lib/addStylesClient.js")("e3a9210c", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/_css-loader@0.28.5@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.2@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7f5a5f83\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=styles&index=0!./Tabbar.vue", function() {
+     var newContent = require("!!../../../../node_modules/_css-loader@0.28.5@css-loader/index.js!../../../../node_modules/_vue-loader@12.2.2@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7f5a5f83\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=styles&index=0!./Tabbar.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -45370,6 +45509,51 @@ module.exports = Component.exports
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/Tabbar.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/_vue-style-loader@3.0.1@vue-style-loader/index.js!./node_modules/_css-loader@0.28.5@css-loader/index.js!./node_modules/_vue-loader@12.2.2@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7f5a5f83\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Tabbar.vue")
+}
+var Component = __webpack_require__("./node_modules/_vue-loader@12.2.2@vue-loader/lib/component-normalizer.js")(
+  /* script */
+  __webpack_require__("./node_modules/_babel-loader@7.1.2@babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Tabbar.vue"),
+  /* template */
+  __webpack_require__("./node_modules/_vue-loader@12.2.2@vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-7f5a5f83\",\"hasScoped\":false}!./node_modules/_vue-loader@12.2.2@vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Tabbar.vue"),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "C:\\Users\\Li\\Workspace\\Code\\article-backend\\resources\\assets\\js\\components\\Tabbar.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Tabbar.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7f5a5f83", Component.options)
+  } else {
+    hotAPI.reload("data-v-7f5a5f83", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/custom.js":
 /***/ (function(module, exports) {
 
@@ -45449,12 +45633,13 @@ window.Vue = __webpack_require__("./node_modules/_vue@2.4.2@vue/dist/vue.common.
 Vue.component('pagination', __webpack_require__("./resources/assets/js/components/Pagination.vue"));
 Vue.component('dropdown', __webpack_require__("./resources/assets/js/components/DropdownMenu.vue"));
 Vue.component('tab', __webpack_require__("./resources/assets/js/components/Tab.vue"));
+Vue.component('tab-bar', __webpack_require__("./resources/assets/js/components/Tabbar.vue"));
 
 
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 
-var routes = [{ path: '/news', component: __webpack_require__("./resources/assets/js/components/Pagination.vue") }];
+var routes = [{ path: '/:id', component: __webpack_require__("./resources/assets/js/components/Pagination.vue") }, { path: '', component: __webpack_require__("./resources/assets/js/components/Pagination.vue") }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: routes

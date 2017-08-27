@@ -1,12 +1,21 @@
 <template>
   <div>
-    <ul class="dropdown-menu" role="menu">
-      <li>
-        <a href="">
-          你哈啊
-        </a>
-      </li>
-    </ul>
+    <li class="dropdown">
+      <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+        父级分类1
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu" role="menu" v-for="">
+        <li>
+          <a href="">子分类1</a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="">子分类2</a>
+        </li>
+        <li class="divider"></li>
+      </ul>
+    </li>
   </div>
 </template>
 

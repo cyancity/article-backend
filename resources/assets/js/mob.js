@@ -11,13 +11,15 @@ window.Vue = require('vue')
 Vue.component('pagination', require('./components/Pagination.vue'));
 Vue.component('dropdown',require('./components/DropdownMenu.vue'));
 Vue.component('tab', require('./components/Tab.vue'));
+Vue.component('tab-bar', require('./components/Tabbar.vue'));
 
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter);
 
 const routes = [
-    {path: '/news',component: require('./components/Pagination.vue')}
+    {path: '/:id',component: require('./components/Pagination.vue')},
+    {path: '',component: require('./components/Pagination.vue')}
 ];
 
 const router = new VueRouter({

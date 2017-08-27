@@ -113,13 +113,8 @@ class ArticleController extends Controller
 
     public function getContents(Request $request)
     {
-        $item = $request->get('item');
-        $contents = $this->articleRepository->getContentsWithPaginationByItem($item);
+        $id = $request->get('id');
+        $contents = $this->articleRepository->getContentsWithPaginationByItem($id);
         return $contents;
-    }
-
-    public function getItems()
-    {
-        return $items = $this->articleRepository->findItems();
     }
 }

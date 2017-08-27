@@ -1,15 +1,5 @@
 <template>
   <div>
-    <ul class="list-inline">
-      <ul class="nav nav-tabs">
-        <li class="active" v-for="(item,index) in tabItems" :key="index">
-          <router-link :to="item.category" @click="getContents">
-            {{item.category}}
-          </router-link>
-        </li>
-      </ul>
-    </ul>
-
     <ul class="list-group">
       <li class="list-group-item" v-for="(content, index) in contents" :key="index">
         <a :href="'/article/' + content.id">
@@ -56,21 +46,15 @@ export default {
       },
       offset: 4,
       contents: [],
-      items: [],
       itemsCount: 1,
-      defaultItem: '1',
-      tabItems: {},
+      defaultItem: '4',
     }
   },
-    created () {
-        this.getItems()
-    },
-  // beforeMount () {
-  //   this.getItems()
-  // },
-
   mounted () {
-    this.getContents(this. defaultItem)
+    this.getContents(this.defaultItem)
+  },
+  watch: {
+    '$route': 'getContents'
   },
   computed: {
     isActived: function () {
@@ -97,10 +81,11 @@ export default {
     }
   },
   methods: {
-    getContents (item) {
+    getContents () {
+      var id = this.$route.params.id
       axios.get('api/contents/', {
         params: {
-          item: item
+          id: id
         }
       })
       .then((res) => {
@@ -115,15 +100,7 @@ export default {
     changePage: function(page) {
       this.pagination.current_page = page
       this.getContents(page)
-      window.location.hash = '12'
-    },
-      getItems () {
-          axios.get('api/items')
-              .then((res) => {
-                  console.log(res)
-                  this.tabItems = res.data.category
-              })
-      }
+    }
   }
 }
 </script>

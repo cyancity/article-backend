@@ -6,7 +6,7 @@
             </div>
         </div>
     </div>
-    <pagination></pagination>
+    <tab-bar></tab-bar>
     <router-view></router-view>
 
 

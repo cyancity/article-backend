@@ -57,14 +57,30 @@ class CategoryController extends Controller
         return view('category.index',compact('categories'))->with('success',$name.'-修改成功');
     }
 
+    public function getTabbarItems()
+    {
+        return $this->categoryRepository->getTabbarItems();
+    }
+
     public function getNav()
     {
-        $first = $this->categoryRepository->getFirstCategory();
-        $sub = $this->categoryRepository->getSubCategory();
-        $response = [
-            'first' => $first,
-            'sub' => $sub
-        ];
+        // 获取所有父类
+        $parent = $this->categoryRepository->getCategoryByPid(0);
+        // 遍历出父类的id，放入数组
+        for($i=0;$i<count($parent);$i++){
+            $parentId[] = $parent[$i]['id'];
+            $parentUrl[] = $parent[$i]['url'];
+        }
+        // 循环出结果
+        for ($i=0;$i<count($parentId);$i++) {
+            $item = [
+                'id' => $parentId[$i], // 父类id
+                'title' => implode('',$this->categoryRepository->byIdWithName($parentId[$i])[0]), // 父类名称, 转为字符串
+                'url' => $parentUrl[$i],
+                'subItem' => $this->categoryRepository->getCategoryByPid($parentId[$i]) // 父类所有的子类
+            ];
+            $response[] = $item;
+        }
         return $response;
     }
 }

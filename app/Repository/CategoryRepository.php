@@ -25,6 +25,11 @@ class CategoryRepository
         return Category::find($id);
     }
 
+    public function getCategory()
+    {
+        return Category::all();
+    }
+
     public function getData()
     {
         return $cates = Category::all()->toArray();
@@ -65,6 +70,11 @@ class CategoryRepository
         return $tree;
     }
 
+    public function getTabbarItems()
+    {
+        return Category::select('title','id')->where('pid','!=',0)->get();
+    }
+
     public function getOptions()
     {
         $data = $this->getData();
@@ -82,6 +92,7 @@ class CategoryRepository
     {
        return Category::select(['id','title','pid','url'])->where('pid',$id)->get()->toArray();
     }
+
     public static function findCategoryById($id)
     {
         $category = Category::select('title')->where('id',$id)->get()->toArray();
@@ -100,13 +111,9 @@ class CategoryRepository
         }
     }
 
-    public function getSubCategory()
+    public function getCategoryByPid($id)
     {
-        return Category::where('pid','!=',0)->get();
+        return Category::where('pid',$id)->get()->toArray();
     }
 
-    public function getFirstCategory()
-    {
-        return Category::where('pid','=','0')->get();
-    }
 }

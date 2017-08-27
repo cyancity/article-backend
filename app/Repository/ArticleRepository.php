@@ -53,12 +53,10 @@ class ArticleRepository
         return Article::select(['title','created_at'])->offset($page)->limit(10)->get();
     }
 
-    public function getContentsWithPaginationByItem($item)
+    public function getContentsWithPaginationByItem($id)
     {
         // Return the specified item content with pagination
-        $item = 1;
-//        $item = CategoryRepository::findCategoryById($item);
-        $results = Article::where('category', $item)->latest()->paginate(10);
+        $results = Article::where('category', $id)->latest()->paginate(10);
         // response needs title, time and pagination data, missing title and time, so add
         $response = [
             'pagination' => [
@@ -74,20 +72,8 @@ class ArticleRepository
         return $response;
     }
 
-    public function findItems()
-    {
-        // Return All categories list
-        $categories = Article::select('category')->distinct()->get();
-        // $categories = json_encode($categories);
-        $response = [
-            'category' => $categories
-        ];
-        return $response;
-    }
-
     public function getTabItems()
     {
         return $categories = Category::select('pid')->where('pid',0)->distinct()->get();
-
     }
 }
