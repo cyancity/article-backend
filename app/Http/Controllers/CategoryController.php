@@ -73,9 +73,10 @@ class CategoryController extends Controller
         }
         // 循环出结果
         for ($i=0;$i<count($parentId);$i++) {
+//            dd((string)$this->categoryRepository->byIdWithCateName($parentId[$i]));
             $item = [
                 'id' => $parentId[$i], // 父类id
-                'title' => implode('',$this->categoryRepository->byIdWithName($parentId[$i])[0]), // 父类名称, 转为字符串
+                'title' => $this->categoryRepository->byIdWithName($parentId[$i])->title, // 父类名称, 转为字符串
                 'url' => $parentUrl[$i],
                 'subItem' => $this->categoryRepository->getCategoryByPid($parentId[$i]) // 父类所有的子类
             ];

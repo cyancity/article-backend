@@ -20,6 +20,11 @@ class CategoryRepository
         return Category::create($data);
     }
 
+    public function byIdWithCateName($id)
+    {
+        return Category::where('pid',$id)->first();
+    }
+
     public function byIdWithName($id)
     {
         return Category::find($id);
