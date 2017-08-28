@@ -75,9 +75,9 @@ class CategoryRepository
         return $tree;
     }
 
-    public function getTabbarItems()
+    public function getTabbarItems($pid)
     {
-        return Category::select('title','id')->where('pid','!=',0)->get();
+        return Category::select('title','id')->where('pid',$pid)->get();
     }
 
     public function getOptions()
@@ -114,6 +114,12 @@ class CategoryRepository
         } else {
             abort('500', 'Update error');
         }
+    }
+
+    public function updateByUrl($id, $url)
+    {
+        // Update the specified category by the name
+        return Category::where('id', $id)->update(['url' => $url]);
     }
 
     public function getCategoryByPid($id)

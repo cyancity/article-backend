@@ -47,7 +47,7 @@ export default {
       offset: 4,
       contents: [],
       itemsCount: 1,
-      defaultItem: '4',
+      defaultItem: '1',
     }
   },
   mounted () {

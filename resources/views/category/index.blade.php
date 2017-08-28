@@ -35,6 +35,7 @@
                                     <td>{{ $category->title }}</td>
                                     <td>{{ isset($category->url) ? $category->url : '无' }}</td>
                                     <td>
+                                        <a href="/category/edit-url/{{$category->id}}">添加外链</a>
                                         <a href="/category/edit/{{$category->id}}">修改</a>
                                     </td>
                                 </tr>

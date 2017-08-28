@@ -56,10 +56,26 @@ class CategoryController extends Controller
         $categories = $this->categoryRepository->getCategory();
         return view('category.index',compact('categories'))->with('success',$name.'-修改成功');
     }
-
-    public function getTabbarItems()
+    public function editUrl($id)
     {
-        return $this->categoryRepository->getTabbarItems();
+        // edit
+        $data = $this->categoryRepository->byIdWithName($id);
+        return view('/category.edit',compact('data'));
+    }
+
+    public function updateUrl(Request $request)
+    {
+        $url = $request->input('url');
+        $id = $request->input('id');
+        $this->categoryRepository->updateByUrl($id, $url);
+        $categories = $this->categoryRepository->getCategory();
+        return view('category.index',compact('categories'))->with('success',$id.'-修改成功');
+    }
+
+    public function getTabbarItems(Request $request)
+    {
+        $id = $request->get('id');
+        return $this->categoryRepository->getTabbarItems($id);
     }
 
     public function getNav()

@@ -20,16 +20,19 @@ export default {
     }
   },
   methods: {
-    getItems () {
-      axios.get('api/tab-items')
+    getItems (id) {
+      axios.get('api/tab-items', {
+          params: {
+              id: id
+          }
+      })
       .then((res) => {
-          console.log(res)
           this.tabItems = res.data
       })
     }
   },
   created () {
-    this.getItems()
+    this.getItems(this.$route.params.id)
   }
 }
 </script>

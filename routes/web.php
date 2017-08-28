@@ -24,7 +24,9 @@ Route::get('article/delete/{id}','ArticleController@destroy');
 
 Route::get('/category','CategoryController@index');
 Route::get('category/edit/{id}', 'CategoryController@edit');
+Route::get('category/edit-url/{id}', 'CategoryController@editUrl');
 Route::post('/category/update','CategoryController@update');
+Route::post('/category/update-url','CategoryController@updateUrl');
 Route::get('/category','CategoryController@index');
 Route::get('/category/create','CategoryController@create')->name('category.create');
 Route::post('/category/store','CategoryController@store');
