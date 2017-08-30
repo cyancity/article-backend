@@ -1785,6 +1785,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     changePage: function changePage(page) {
       this.pagination.current_page = page;
       this.getContents(page);
+    },
+    getPages: function getPages(page) {
+      var _this2 = this;
+
+      axios.get('api/page/', {
+        params: {
+          page: page
+        }
+      }).then(function (res) {
+        _this2.contents = res.data.data.data;
+        _this2.pagination = res.data.pagination;
+      });
     }
   }
 });
@@ -4307,7 +4319,7 @@ exports = module.exports = __webpack_require__("./node_modules/_css-loader@0.28.
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32203,7 +32215,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "list-group-item"
     }, [_c('a', {
       attrs: {
-        "href": '/article/' + content.id
+        "href": '/news/' + content.id
       }
     }, [_vm._v("\n        " + _vm._s(content.title) + "\n      ")]), _vm._v(" "), _c('span', [_vm._v("\n        " + _vm._s(content.created_at) + "\n      ")])])
   })), _vm._v(" "), _c('nav', [_c('ul', {
