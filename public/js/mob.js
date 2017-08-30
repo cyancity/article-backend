@@ -32215,7 +32215,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "list-group-item"
     }, [_c('a', {
       attrs: {
-        "href": '/news/show' + content.id
+        "href": '/news/show/' + content.id
       }
     }, [_vm._v("\n        " + _vm._s(content.title) + "\n      ")]), _vm._v(" "), _c('span', [_vm._v("\n        " + _vm._s(content.created_at) + "\n      ")])])
   })), _vm._v(" "), _c('nav', [_c('ul', {
