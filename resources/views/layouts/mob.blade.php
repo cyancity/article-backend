@@ -19,7 +19,7 @@
     <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -28,11 +28,7 @@
           <a class="navbar-brand" href="/news">镇江民生工商</a>
         </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-          <ul class="nav navbar-nav">
-            <tab></tab>
-          </ul>
-        </div>
+        <tab></tab>
 
       </div>
     </nav>

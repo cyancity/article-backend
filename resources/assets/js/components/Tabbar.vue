@@ -1,13 +1,11 @@
 <template>
   <div>
-    <ul class="list-inline">
-      <ul class="nav nav-tabs">
-        <li class="active" v-for="(item,index) in tabItems" :key="index">
-          <router-link :to="'/' + item.id">
-            {{item.title}}
-          </router-link>
-        </li>
-      </ul>
+    <ul class="nav nav-pills" style="width: 100%">
+      <li v-for="(item,index) in tabItems" :key="index">
+        <router-link :to="'/' + item.id">
+          {{item.title}}
+        </router-link>
+      </li>
     </ul>
   </div>
 </template>

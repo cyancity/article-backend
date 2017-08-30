@@ -75,7 +75,9 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $article = $this->articleRepository->byId($id);
-        return view('article.edit',compact('article'));
+        $categoryRepository = new CategoryRepository();
+        $lists = $categoryRepository->getOptions();
+        return view('article.edit',compact('article','lists'));
     }
 
     /**

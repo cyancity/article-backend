@@ -21,10 +21,14 @@
                                         <strong>{{ $errors->first('title') }}</strong>
                                     </span> @endif
                         </div>
-                        
+
                         <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
-                            <label for="category">修改分类</label>
-                            <input id="category" value="{{old('category')}}" type="text" name="category" class="form-control" placeholder="添加新的分类名">
+                            <label for="sel1">Select list:</label>
+                            <select class="form-control" id="sel1" name="category">
+                                @foreach($lists as $id => $list )
+                                    <option value="{{$id}}">{{$list}}</option>
+                                @endforeach
+                            </select>
                             <strong>{{ $errors->first('category') }}</strong>
                         </div>
 

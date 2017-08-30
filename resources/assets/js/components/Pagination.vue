@@ -2,7 +2,7 @@
   <div>
     <ul class="list-group">
       <li class="list-group-item" v-for="(content, index) in contents" :key="index">
-        <a :href="'/article/' + content.id">
+        <a :href="'/news/' + content.id">
           {{ content.title }}
         </a>
         <span>
@@ -83,6 +83,7 @@ export default {
   methods: {
     getContents () {
       var id = this.$route.params.id
+      console.log(id)
       axios.get('api/contents/', {
         params: {
           id: id
@@ -100,6 +101,17 @@ export default {
     changePage: function(page) {
       this.pagination.current_page = page
       this.getContents(page)
+    },
+    getPages (page) {
+      axios.get('api/page/', {
+        params: {
+            page: page
+        }
+      })
+      .then((res) => {
+          this.contents = res.data.data.data
+          this.pagination = res.data.pagination
+      })
     }
   }
 }

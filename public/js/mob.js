@@ -1768,6 +1768,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       var id = this.$route.params.id;
+      console.log(id);
       axios.get('api/contents/', {
         params: {
           id: id
@@ -1795,10 +1796,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
 //
 //
 //
@@ -1848,8 +1845,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -4297,7 +4292,7 @@ exports = module.exports = __webpack_require__("./node_modules/_css-loader@0.28.
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -4312,7 +4307,7 @@ exports = module.exports = __webpack_require__("./node_modules/_css-loader@0.28.
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -4327,7 +4322,7 @@ exports = module.exports = __webpack_require__("./node_modules/_css-loader@0.28.
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32139,25 +32134,52 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', _vm._l((_vm.data), function(parent) {
-    return _c('li', [(parent.url) ? _c('a', {
+  return _c('div', {
+    staticClass: "collapse navbar-collapse",
+    attrs: {
+      "id": "navbar-collapse"
+    }
+  }, [_c('ul', {
+    staticClass: "nav navbar-nav"
+  }, _vm._l((_vm.data), function(parent) {
+    return _c('li', {
+      staticClass: "dropdown"
+    }, [(parent.url) ? _c('a', {
+      staticClass: "dropdown-toggle",
       attrs: {
-        "href": parent.url
+        "href": parent.url,
+        "data-toggle": "dropdown",
+        "role": "button",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
       }
-    }, [_vm._v("\n            " + _vm._s(parent.title) + "\n            "), _c('span', {
+    }, [_vm._v(_vm._s(parent.title) + " "), _c('span', {
       staticClass: "caret"
-    })]) : _c('a', [_vm._v("\n            " + _vm._s(parent.title) + "\n            "), _c('span', {
+    })]) : _c('a', {
+      staticClass: "dropdown-toggle",
+      attrs: {
+        "data-toggle": "dropdown",
+        "role": "button",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }
+    }, [_vm._v(_vm._s(parent.title) + " "), _c('span', {
       staticClass: "caret"
     })]), _vm._v(" "), _vm._l((parent.subItem), function(sub) {
-      return _c('ul', [_c('li', [_c('router-link', {
+      return _c('ul', {
+        staticClass: "dropdown-menu"
+      }, [_c('li', [_c('router-link', {
         attrs: {
           "to": '/' + sub.id
         }
-      }, [_vm._v("\n                    " + _vm._s(sub.title) + "\n                ")])], 1), _vm._v(" "), _c('li', {
-        staticClass: "divider"
+      }, [_vm._v("\n                        " + _vm._s(sub.title) + "\n                    ")])], 1), _vm._v(" "), _c('li', {
+        staticClass: "divider",
+        attrs: {
+          "role": "separator"
+        }
       })])
     })], 2)
-  }))
+  }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -32248,19 +32270,19 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('ul', {
-    staticClass: "list-inline"
-  }, [_c('ul', {
-    staticClass: "nav nav-tabs"
+    staticClass: "nav nav-pills",
+    staticStyle: {
+      "width": "100%"
+    }
   }, _vm._l((_vm.tabItems), function(item, index) {
     return _c('li', {
-      key: index,
-      staticClass: "active"
+      key: index
     }, [_c('router-link', {
       attrs: {
         "to": '/' + item.id
       }
-    }, [_vm._v("\n          " + _vm._s(item.title) + "\n        ")])], 1)
-  }))])])
+    }, [_vm._v("\n        " + _vm._s(item.title) + "\n      ")])], 1)
+  }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -45624,7 +45646,7 @@ Vue.component('tab-bar', __webpack_require__("./resources/assets/js/components/T
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 
-var routes = [{ path: '/:id', component: __webpack_require__("./resources/assets/js/components/Pagination.vue") }, { path: '', component: __webpack_require__("./resources/assets/js/components/Pagination.vue") }];
+var routes = [{ path: '/:id', component: __webpack_require__("./resources/assets/js/components/Pagination.vue") }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: routes
