@@ -12,6 +12,9 @@
   <!-- Styles -->
   <link href="{{ mix('css/mob.css') }}" rel="stylesheet">
   <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style>
+    img{ width: 100%; height: auto;max-width: 100%; display: block; }
+  </style>
 </head>
 
 <body>

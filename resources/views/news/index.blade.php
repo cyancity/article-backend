@@ -2,7 +2,7 @@
     <div class="container-fluid all">
         <div class="maincontent row" id="pagination">
             <div style="padding-top: -8px;">
-                <img src="/img/zjgs-banner.jpg" alt="">
+                <img src="/img/zjgs-banner.jpg" alt="banner">
             </div>
         </div>
     </div>
