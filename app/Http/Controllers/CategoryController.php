@@ -81,7 +81,7 @@ class CategoryController extends Controller
     public function getTabbarItems()
     {
         // $id = $request->get('id');
-        return $this->categoryRepository->getTabbarItems($id);
+        return $this->categoryRepository->getTabbarItems();
     }
 
     public function getNav()

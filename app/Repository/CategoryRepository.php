@@ -77,7 +77,7 @@ class CategoryRepository
     public function getTabbarItems()
     {
         // return Category::select('title','id')->where('pid','!=',$pid)->get();
-        return Category::select('title', 'id')->where()->get();
+        return Category::select('title', 'id')->where('pid','!=','0')->get();
     }
 
     public function getOptions()
