@@ -47,7 +47,7 @@ export default {
       offset: 4,
       contents: [],
       itemsCount: 1,
-      defaultPage: '1',
+      defaultPage: '4',
     }
   },
   mounted () {
@@ -81,12 +81,11 @@ export default {
     }
   },
   methods: {
-    getContents (page) {
-      let id = this.$route.params.id
+    getContents () {
+      var id = this.$route.params.id
       axios.get('api/contents/', {
         params: {
-          id: id,
-          page: page
+          id: id
         }
       })
       .then((res) => {
