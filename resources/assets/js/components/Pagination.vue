@@ -82,6 +82,7 @@ export default {
   },
   methods: {
     getContents (page) {
+      let id = this.$router.params.id
       axios.get('api/contents/', {
         params: {
           id: id,
