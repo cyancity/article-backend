@@ -6,7 +6,10 @@
                 <a v-else class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ parent.title }} <span class="caret"></span></a>
                 <ul class="dropdown-menu"  v-for="sub in parent.subItem">
                     <li>
-                        <router-link :to="'/' + sub.id ">
+                        <router-link v-if="parent.url" :to="parent.url">
+                            {{ sub.title }}
+                        </router-link>
+                        <router-link v-else :to="'/' + sub.id ">
                             {{ sub.title }}
                         </router-link>
                     </li>

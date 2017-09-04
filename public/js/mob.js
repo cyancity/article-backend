@@ -1828,6 +1828,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4304,7 +4307,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32180,7 +32183,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })]), _vm._v(" "), _vm._l((parent.subItem), function(sub) {
       return _c('ul', {
         staticClass: "dropdown-menu"
-      }, [_c('li', [_c('router-link', {
+      }, [_c('li', [(parent.url) ? _c('router-link', {
+        attrs: {
+          "to": parent.url
+        }
+      }, [_vm._v("\n                        " + _vm._s(sub.title) + "\n                    ")]) : _c('router-link', {
         attrs: {
           "to": '/' + sub.id
         }
