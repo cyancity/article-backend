@@ -16,7 +16,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/barryvdh/laravel-ide-helper/2b1273c45e2f8df7a625563e2283a17c14f02ae8.zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/2b1273c45e2f8df7a625563e2283a17c14f02ae8",
                 "reference": "2b1273c45e2f8df7a625563e2283a17c14f02ae8",
                 "shasum": ""
             },
@@ -89,7 +89,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/barryvdh/ReflectionDocBlock/3dcbd98b5d9384a5357266efba8fd29884458e5c.zip",
+                "url": "https://api.github.com/repos/barryvdh/ReflectionDocBlock/zipball/3dcbd98b5d9384a5357266efba8fd29884458e5c",
                 "reference": "3dcbd98b5d9384a5357266efba8fd29884458e5c",
                 "shasum": ""
             },
@@ -868,7 +868,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/overtrue/laravel-ueditor/17a5e7fc0d6bf0ecd705be0706f912f7f0a3ae60.zip",
+                "url": "https://api.github.com/repos/overtrue/laravel-ueditor/zipball/17a5e7fc0d6bf0ecd705be0706f912f7f0a3ae60",
                 "reference": "17a5e7fc0d6bf0ecd705be0706f912f7f0a3ae60",
                 "shasum": ""
             },
@@ -1164,7 +1164,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/recca0120/laravel-tracy/2bd0d91f34241ed3b5f4d30a5c3571be7a468978.zip",
+                "url": "https://api.github.com/repos/recca0120/laravel-tracy/zipball/2bd0d91f34241ed3b5f4d30a5c3571be7a468978",
                 "reference": "2bd0d91f34241ed3b5f4d30a5c3571be7a468978",
                 "shasum": ""
             },
@@ -1234,7 +1234,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/recca0120/laravel-terminal/53f5bb9e3a7ed6edb22f944147e6a584b9091c33.zip",
+                "url": "https://api.github.com/repos/recca0120/laravel-terminal/zipball/53f5bb9e3a7ed6edb22f944147e6a584b9091c33",
                 "reference": "53f5bb9e3a7ed6edb22f944147e6a584b9091c33",
                 "shasum": ""
             },
@@ -1355,7 +1355,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/class-loader/386a294d621576302e7cc36965d6ed53b8c73c4f.zip",
+                "url": "https://api.github.com/repos/symfony/class-loader/zipball/386a294d621576302e7cc36965d6ed53b8c73c4f",
                 "reference": "386a294d621576302e7cc36965d6ed53b8c73c4f",
                 "shasum": ""
             },
@@ -2206,7 +2206,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/nette/tracy/efe45da0aa3a50ce5356be39f2168d7925d94f3d.zip",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/efe45da0aa3a50ce5356be39f2168d7925d94f3d",
                 "reference": "efe45da0aa3a50ce5356be39f2168d7925d94f3d",
                 "shasum": ""
             },
@@ -2373,7 +2373,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/webmozart/glob/3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe.zip",
+                "url": "https://api.github.com/repos/webmozart/glob/zipball/3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe",
                 "reference": "3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe",
                 "shasum": ""
             },
@@ -2420,7 +2420,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/webmozart/path-util/d939f7edc24c9a1bb9c0dee5cb05d8e859490725.zip",
+                "url": "https://api.github.com/repos/webmozart/path-util/zipball/d939f7edc24c9a1bb9c0dee5cb05d8e859490725",
                 "reference": "d939f7edc24c9a1bb9c0dee5cb05d8e859490725",
                 "shasum": ""
             },
