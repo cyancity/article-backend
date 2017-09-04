@@ -39,7 +39,7 @@ class CategoryController extends Controller
         $lists = $this->categoryRepository->getOptions();
         return redirect()->route('category.create', compact('lists'))->with('success','分类添加成功');
     }
-    
+
 
     public function edit($id)
     {
@@ -72,10 +72,16 @@ class CategoryController extends Controller
         return view('category.index',compact('categories'))->with('success',$id.'-修改成功');
     }
 
-    public function getTabbarItems(Request $request)
+    /**
+     * [getTabbarItems description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     * 如果需要接受参数，则注入Request，需求只要求提取三个item，所以写固定的即可
+     */
+    public function getTabbarItems()
     {
-        $id = $request->get('id');
-        return $this->categoryRepository->getTabbarItems($id);
+        // $id = $request->get('id');
+        return $this->categoryRepository->getTabbarItems();
     }
 
     public function getNav()
