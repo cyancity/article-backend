@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     getNav () {
-      axios.get('api/nav')
+      axios.get('/api/nav')
       .then((res) => {
         this.data = res.data
       })
