@@ -32295,7 +32295,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.tabItems), function(item, index) {
     return _c('li', {
       key: index,
-      staticClass: "col-sm-4"
+      staticClass: "col-sm-3"
     }, [_c('router-link', {
       attrs: {
         "to": '/' + item.id
