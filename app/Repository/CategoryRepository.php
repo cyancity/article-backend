@@ -8,13 +8,6 @@ use App\Category;
 
 class CategoryRepository
 {
-    // No need any more
-//    public function getCategoriesForTagging($request)
-//    {
-//        return Category::select(['id','title'])
-//            ->where('title','like','%'.$request->query('q').'%')
-//            ->get();
-//    }
     public function create($data)
     {
         return Category::create($data);
@@ -74,10 +67,17 @@ class CategoryRepository
         }
         return $tree;
     }
-
-    public function getTabbarItems($pid)
+    /**
+     * [getTabbarItems description]
+     * @param  [type] $pid [description]
+     * @return [type]      [description]
+     * 获取前端页面tabbar的item
+     * 因为现在只需要固定的三个，所以改写方法
+     */
+    public function getTabbarItems()
     {
-        return Category::select('title','id')->where('pid',$pid)->get();
+        // return Category::select('title','id')->where('pid','!=',$pid)->get();
+        return Category::select('title', 'id','icon')->whereIn('id',[4,5,6])->get();
     }
 
     public function getOptions()

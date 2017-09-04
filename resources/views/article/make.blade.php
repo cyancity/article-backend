@@ -9,8 +9,6 @@
                 新闻编辑器
             </div>
             <div class="panel-body">
-                 bn
-
                 <form action="{{url('/article')}}" method="post">
                     {!! csrf_field() !!}
 

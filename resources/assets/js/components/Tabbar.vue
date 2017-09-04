@@ -1,13 +1,12 @@
 <template>
   <div>
-    <ul class="list-inline">
-      <ul class="nav nav-tabs">
-        <li class="active" v-for="(item,index) in tabItems" :key="index">
-          <router-link :to="'/' + item.id">
-            {{item.title}}
-          </router-link>
-        </li>
-      </ul>
+    <ul class="row nav nav-pills" >
+      <li v-for="(item,index) in tabItems" :key="index" class="col-sm-4">
+        <router-link :to="'/' + item.id">
+          <i class="icon iconfont" :class="item.icon"></i>
+          {{item.title}}
+        </router-link>
+      </li>
     </ul>
   </div>
 </template>
@@ -16,7 +15,7 @@
 export default {
   data () {
     return {
-      tabItems: []
+      tabItems: [],
     }
   },
   methods: {

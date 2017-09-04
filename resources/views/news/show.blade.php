@@ -7,8 +7,8 @@
         <div class="row">
             <div class="col-sm-12">
                 <article>
-                    <h1>{{ $article->title }}</h1>
-                    <h5 class="topic">{{$article->category}}</h5>
+                    <h2>{{ $article->title }}</h2>
+                    <h5>发布时间 {{substr($article->created_at,0,10)}}</h5>
                     <hr>
                 </article>
                 <div class="content" style="margin-left:-15px; margin-right: -15px">

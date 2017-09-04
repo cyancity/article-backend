@@ -27,7 +27,6 @@ class NewsController extends Controller
     public function show($id)
     {
         $categoryRepository = new CategoryRepository();
-        $titles = $categoryRepository->getTabsById(0);
         $article = $this->articleRepository->byId($id);
         return view('news.show', compact('article','titles'));
     }

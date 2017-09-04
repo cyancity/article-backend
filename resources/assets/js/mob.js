@@ -19,7 +19,6 @@ Vue.use(VueRouter);
 
 const routes = [
     {path: '/:id',component: require('./components/Pagination.vue')},
-    {path: '',component: require('./components/Pagination.vue')}
 ];
 
 const router = new VueRouter({
