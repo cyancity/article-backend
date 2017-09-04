@@ -1767,7 +1767,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getContents: function getContents(page) {
       var _this = this;
 
-      var id = this.$router.params.id;
+      var id = this.$route.params.id;
       axios.get('api/contents/', {
         params: {
           id: id,
