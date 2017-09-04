@@ -1729,11 +1729,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       offset: 4,
       contents: [],
       itemsCount: 1,
-      defaultItem: '1'
+      defaultPage: '1'
     };
   },
   mounted: function mounted() {
-    this.getContents(this.defaultItem);
+    this.getContents(this.defaultPage);
   },
 
   watch: {
@@ -1764,14 +1764,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   methods: {
-    getContents: function getContents() {
+    getContents: function getContents(page) {
       var _this = this;
 
-      var id = this.$route.params.id;
-      console.log(id);
       axios.get('api/contents/', {
         params: {
-          id: id
+          id: id,
+          page: page
         }
       }).then(function (res) {
         console.log(res.data);
@@ -4324,7 +4323,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32223,10 +32222,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       key: index,
       staticClass: "list-group-item"
     }, [_c('a', {
+      staticStyle: {
+        "overflow": "hidden",
+        "max-width": "240px"
+      },
       attrs: {
         "href": '/news/show/' + content.id
       }
-    }, [_vm._v("\n        " + _vm._s(content.title) + "\n      ")]), _vm._v(" "), _c('span', [_vm._v("\n        " + _vm._s(content.created_at) + "\n      ")])])
+    }, [_vm._v("\n        " + _vm._s(content.title) + "\n      ")]), _vm._v(" "), _c('span', {
+      staticClass: "pull-right"
+    }, [_vm._v("\n        " + _vm._s(content.created_at.substr(0, 10)) + "\n      ")])])
   })), _vm._v(" "), _c('nav', [_c('ul', {
     staticClass: "pagination pull-right"
   }, [(_vm.pagination.current_page > 1) ? _c('li', [_c('a', {
@@ -32295,7 +32300,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.tabItems), function(item, index) {
     return _c('li', {
       key: index,
-      staticClass: "col-sm-4"
+      staticStyle: {
+        "display": "inline-block",
+        "width": "33.33%",
+        "margin": "0 auto",
+        "text-align": "center"
+      }
     }, [_c('router-link', {
       attrs: {
         "to": '/' + item.id
@@ -45423,7 +45433,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/chengyang/Workspace/Code/laravel/article-backend/resources/assets/js/components/DropdownMenu.vue"
+Component.options.__file = "/home/li/Workspace/Code/article-backend/resources/assets/js/components/DropdownMenu.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] DropdownMenu.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -45468,7 +45478,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/chengyang/Workspace/Code/laravel/article-backend/resources/assets/js/components/Pagination.vue"
+Component.options.__file = "/home/li/Workspace/Code/article-backend/resources/assets/js/components/Pagination.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Pagination.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -45513,7 +45523,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/chengyang/Workspace/Code/laravel/article-backend/resources/assets/js/components/Tab.vue"
+Component.options.__file = "/home/li/Workspace/Code/article-backend/resources/assets/js/components/Tab.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Tab.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -45558,7 +45568,7 @@ var Component = __webpack_require__("./node_modules/vue-loader/lib/component-nor
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/chengyang/Workspace/Code/laravel/article-backend/resources/assets/js/components/Tabbar.vue"
+Component.options.__file = "/home/li/Workspace/Code/article-backend/resources/assets/js/components/Tabbar.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Tabbar.vue: functional components are not supported with templates, they should use render functions.")}
 

@@ -31,6 +31,11 @@ class CategoryController extends Controller
         return view('category.make',compact('lists'));
     }
 
+    public function deleteCate($id)
+    {
+
+    }
+
     public function store(Request $request)
     {
         // store category

@@ -2,11 +2,11 @@
   <div>
     <ul class="list-group">
       <li class="list-group-item" v-for="(content, index) in contents" :key="index">
-        <a :href="'/news/show/' + content.id">
+        <a :href="'/news/show/' + content.id" style="overflow: hidden;max-width: 240px">
           {{ content.title }}
         </a>
-        <span>
-          {{content.created_at}}
+        <span class="pull-right">
+          {{content.created_at.substr(0,10)}}
         </span>
       </li>
     </ul>
@@ -47,11 +47,11 @@ export default {
       offset: 4,
       contents: [],
       itemsCount: 1,
-      defaultItem: '1',
+      defaultPage: '1',
     }
   },
   mounted () {
-    this.getContents(this.defaultItem)
+      this.getContents(this.defaultPage)
   },
   watch: {
     '$route': 'getContents'
@@ -81,12 +81,11 @@ export default {
     }
   },
   methods: {
-    getContents () {
-      var id = this.$route.params.id
-      console.log(id)
+    getContents (page) {
       axios.get('api/contents/', {
         params: {
-          id: id
+          id: id,
+          page: page
         }
       })
       .then((res) => {

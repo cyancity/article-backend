@@ -28,7 +28,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/news">镇江民生工商</a>
+          <a class="navbar-brand" href="/news#/4">镇江民生工商</a>
         </div>
 
         <tab></tab>
