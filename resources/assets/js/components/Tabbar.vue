@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="nav nav-pills" style="width: 100%">
+    <ul class="nav nav-pills" style="width: 100%; margin: 0 auto;">
       <li v-for="(item,index) in tabItems" :key="index">
         <router-link :to="'/' + item.id">
           {{item.title}}
