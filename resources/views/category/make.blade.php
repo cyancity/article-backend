@@ -31,7 +31,10 @@
                                 @endforeach
                             </select>
                         </div>
-                        <input type="text" class="form-control" name="title">
+                        <label for="title"> 分类名称</label>
+                        <input id="title" type="text" class="form-control" name="title">
+                        <label for="icon">图标</label>
+                        <input id="icon" type="text" class="form-control" name="icon">
 
                         <button class="btn btn-success pull-right">提交</button>
                     </form>

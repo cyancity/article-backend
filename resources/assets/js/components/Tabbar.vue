@@ -1,8 +1,9 @@
 <template>
   <div>
-    <ul class="nav nav-pills" style="width: 100%; margin: 0 auto;">
-      <li v-for="(item,index) in tabItems" :key="index">
+    <ul class="nav nav-pills" >
+      <li v-for="(item,index) in tabItems" :key="index" style="margin: 0 auto;">
         <router-link :to="'/' + item.id">
+          <i class="icon iconfont">&#xe621; {{item.icon}}</i>
           {{item.title}}
         </router-link>
       </li>
