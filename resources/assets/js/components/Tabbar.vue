@@ -1,9 +1,9 @@
 <template>
   <div>
-    <ul class="nav nav-pills" >
-      <li v-for="(item,index) in tabItems" :key="index" style="margin: 0 auto;">
+    <ul class="row nav nav-pills" >
+      <li v-for="(item,index) in tabItems" :key="index" class="col-sm-4">
         <router-link :to="'/' + item.id">
-          <i class="icon iconfont">&#xe621; {{item.icon}}</i>
+          <i class="icon iconfont" :class="item.icon"></i>
           {{item.title}}
         </router-link>
       </li>
@@ -15,7 +15,7 @@
 export default {
   data () {
     return {
-      tabItems: []
+      tabItems: [],
     }
   },
   methods: {

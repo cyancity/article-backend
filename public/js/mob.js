@@ -32291,20 +32291,19 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('ul', {
-    staticClass: "nav nav-pills"
+    staticClass: "row nav nav-pills"
   }, _vm._l((_vm.tabItems), function(item, index) {
     return _c('li', {
       key: index,
-      staticStyle: {
-        "margin": "0 auto"
-      }
+      staticClass: "col-sm-4"
     }, [_c('router-link', {
       attrs: {
         "to": '/' + item.id
       }
     }, [_c('i', {
-      staticClass: "icon iconfont"
-    }, [_vm._v(" " + _vm._s(item.icon))]), _vm._v("\n        " + _vm._s(item.title) + "\n      ")])], 1)
+      staticClass: "icon iconfont",
+      class: item.icon
+    }), _vm._v("\n        " + _vm._s(item.title) + "\n      ")])], 1)
   }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
