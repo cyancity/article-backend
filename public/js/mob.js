@@ -1848,6 +1848,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       axios.get('/api/nav').then(function (res) {
         _this.data = res.data;
+        console.log(_this.data);
       });
     }
   }
@@ -4307,7 +4308,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32183,9 +32184,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })]), _vm._v(" "), _vm._l((parent.subItem), function(sub) {
       return _c('ul', {
         staticClass: "dropdown-menu"
-      }, [_c('li', [(parent.url) ? _c('router-link', {
+      }, [_c('li', [(sub.url) ? _c('a', {
         attrs: {
-          "to": parent.url
+          "href": sub.url
         }
       }, [_vm._v("\n                        " + _vm._s(sub.title) + "\n                    ")]) : _c('router-link', {
         attrs: {

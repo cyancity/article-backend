@@ -6,9 +6,9 @@
                 <a v-else class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ parent.title }} <span class="caret"></span></a>
                 <ul class="dropdown-menu"  v-for="sub in parent.subItem">
                     <li>
-                        <router-link v-if="parent.url" :to="parent.url">
+                        <a v-if="sub.url" :href="sub.url">
                             {{ sub.title }}
-                        </router-link>
+                        </a>
                         <router-link v-else :to="'/' + sub.id ">
                             {{ sub.title }}
                         </router-link>
@@ -36,6 +36,7 @@ export default {
       axios.get('/api/nav')
       .then((res) => {
         this.data = res.data
+        console.log(this.data)
       })
     }
   }
