@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="row nav nav-pills" >
-      <li v-for="(item,index) in tabItems" :key="index" class="col-sm-3">
+      <li v-for="(item,index) in tabItems" :key="index" class="col-xs-4">
         <router-link :to="'/' + item.id">
           <i class="icon iconfont" :class="item.icon"></i>
           {{item.title}}
