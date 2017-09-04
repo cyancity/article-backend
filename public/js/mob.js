@@ -32294,9 +32294,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row nav nav-pills"
   }, _vm._l((_vm.tabItems), function(item, index) {
     return _c('li', {
-      key: index,
-      staticClass: "col-xs-4"
+      key: index
     }, [_c('router-link', {
+      staticClass: "col-xs-4",
       attrs: {
         "to": '/' + item.id
       }
