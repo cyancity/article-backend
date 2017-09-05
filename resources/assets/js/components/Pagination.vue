@@ -1,13 +1,14 @@
 <template>
   <div>
     <ul class="list-group">
-      <li class="list-group-item" v-for="(content, index) in contents" :key="index">
-        <a :href="'/news/show/' + content.id" style="overflow: hidden;max-width: 240px">
+      <li class="list-group-item" v-for="(content, index) in contents" :key="index" style="display: inline-block">
+        <a :href="'/news/show/' + content.id" style="overflow: hidden;width: 200px">
           {{ content.title }}
+          <span class="pull-right" style="margin-left: 5px">
+            {{content.created_at.substr(0,10)}}
+          </span>
         </a>
-        <span class="pull-right">
-          {{content.created_at.substr(0,10)}}
-        </span>
+
       </li>
     </ul>
 
