@@ -1709,14 +1709,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   watch: {
-    '$route': 'getContents'
+    '$route': function $route(to, form) {
+      this.getResults();
+    }
   },
   methods: {
     // 根据分类 id获取该分类的分页数据
     getResults: function getResults() {
       var _this = this;
 
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
       var id = this.$route.params.id;
       axios.get('api/pagination', {
@@ -1725,6 +1727,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           page: page
         }
       }).then(function (res) {
+        console.log(res.data);
         _this.data = res.data;
       });
     }
@@ -4347,7 +4350,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 

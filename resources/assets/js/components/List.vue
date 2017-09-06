@@ -26,12 +26,14 @@ export default {
     this.getResults()
   },
   watch: {
-    '$route': 'getContents'
+    '$route' (to, form) {
+        this.getResults()
+    }
   },
   methods: {
     // 根据分类 id获取该分类的分页数据
-    getResults (page=1) {
-      var id = this.$route.params.id
+    getResults (page=0) {
+      let id = this.$route.params.id
       axios.get('api/pagination', {
         params: {
             id: id,
@@ -39,6 +41,7 @@ export default {
         }
       })
       .then((res) => {
+        console.log(res.data)
         this.data = res.data
       })
     }
