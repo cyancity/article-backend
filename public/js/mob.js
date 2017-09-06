@@ -1696,6 +1696,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -4350,7 +4351,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32339,25 +32340,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.data.data), function(content, index) {
     return _c('li', {
       key: index,
-      staticClass: "list-group-item",
+      staticClass: "row list-group-item",
       staticStyle: {
-        "display": "block"
+        "display": "block",
+        "min-height": "42px"
       }
     }, [_c('a', {
-      staticStyle: {
-        "display": "inline-block",
-        "width": "inherit"
-      },
+      staticClass: "col-xs-9",
       attrs: {
         "href": '/news/show/' + content.id
       }
     }, [_vm._v("\n        " + _vm._s(content.title) + "\n      ")]), _vm._v(" "), _c('span', {
-      staticClass: "pull-right",
+      staticClass: "col-xs-3 pull-right",
       staticStyle: {
-        "margin-left": "5px",
-        "display": "inline-block"
+        "padding": "0px"
       }
-    }, [_vm._v("\n          " + _vm._s(content.created_at.substr(0, 10)) + "\n      ")])])
+    }, [_vm._v("\n          " + _vm._s(content.created_at.substr(0, 10)) + "\n        ")])])
   })), _vm._v(" "), _c('pagination', {
     staticClass: "pull-right",
     attrs: {

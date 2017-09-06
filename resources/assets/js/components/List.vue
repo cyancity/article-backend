@@ -1,13 +1,14 @@
 <template>
   <div>
     <ul class="list-group">
-      <li class="list-group-item" v-for="(content, index) in data.data" :key="index" style="display: block">
-        <a :href="'/news/show/' + content.id" style="display: inline-block;width: inherit">
+      <li class="row list-group-item" v-for="(content, index) in data.data" :key="index" style="display: block;min-height: 42px">
+        <a :href="'/news/show/' + content.id" class="col-xs-9">
           {{ content.title }}
         </a>
-        <span class="pull-right" style="margin-left: 5px;display: inline-block">
+        <span class="col-xs-3 pull-right" style="padding: 0px;">
             {{content.created_at.substr(0,10)}}
-        </span>
+          </span>
+
       </li>
     </ul>
     <pagination :data="data.pagination" @pagination-change-page="getResults" class="pull-right"></pagination>
