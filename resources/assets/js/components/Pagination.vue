@@ -1,122 +1,73 @@
 <template>
-  <div>
-    <ul class="list-group">
-      <li class="list-group-item" v-for="(content, index) in contents" :key="index" style="display: inline-block">
-        <a :href="'/news/show/' + content.id" style="overflow: hidden;width: 200px">
-          {{ content.title }}
-          <span class="pull-right" style="margin-left: 5px">
-            {{content.created_at.substr(0,10)}}
-          </span>
-        </a>
-
-      </li>
-    </ul>
-
-    <nav>
-      <ul class="pagination pull-right">
-        <li v-if="pagination.current_page > 1">
-          <a href="#" aria-label="Previous" @click.prevent="changePage(pagination.current_page - 1)">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li v-for="(page, index) in pagesNumber" :key="index" :class="[page == isActived ? 'active' : '']">
-          <a href="#" @click.prevent="changePage(page)">
-            {{ page }}
-          </a>
-        </li>
-        <li v-if="pagination.current_page < pagination.last_page">
-          <a href="#" aria-label="Next" @click.prevent="changePage(pagination.currnet_page + 1)">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+    <div>
+        <ul class="pagination" v-if="data.total > data.per_page">
+            <li class="page-item" v-if="data.prev_page_url">
+                <a class="page-link" href="#" aria-label="Previous" @click.prevent="selectPage(--data.current_page)"><span aria-hidden="true">&laquo;</span></a>
+            </li>
+            <li class="page-item" v-for="n in getPages()" :class="{ 'active': n == data.current_page }"><a class="page-link" href="#" @click.prevent="selectPage(n)">{{ n }}</a></li>
+            <li class="page-item" v-if="data.next_page_url">
+                <a class="page-link" href="#" aria-label="Next" @click.prevent="selectPage(++data.current_page)"><span aria-hidden="true">&raquo;</span></a>
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      pagination: {
-        total: 0,
-        per_pgae: 10,
-        from: 1,
-        to: 0,
-        current_page: 1
-      },
-      offset: 4,
-      contents: [],
-      itemsCount: 1,
-      defaultPage: '4',
-    }
-  },
-  mounted () {
-      this.getContents(this.defaultPage)
-  },
-  watch: {
-    '$route': 'getContents'
-  },
-  computed: {
-    isActived: function () {
-      return this.pagination.current_page
-    },
-    pagesNumber: function () {
-      if (!this.pagination.to) {
-        return []
-      }
-      var from = this.pagination.current_page - this.offset;
-      if (from < 1) {
-        from = 1
-      }
-      var to = from + (this.offset * 2)
-      if (to >= this.pagination.last_page) {
-        to = this.pagination.last_page
-      }
-      var pagesArray = []
-      while (from <= to ) {
-        pagesArray.push(from)
-        from++
-      }
-      return pagesArray
-    }
-  },
-  methods: {
-    getContents () {
-      var id = this.$route.params.id
-      axios.get('api/contents/', {
-        params: {
-          id: id
+    props: {
+        data: {
+            type: Object,
+            default: function() {
+                return {
+                    current_page: 1,
+                    data: [],
+                    from: 1,
+                    last_page: 1,
+                    next_page_url: null,
+                    per_page: 10,
+                    prev_page_url: null,
+                    to: 1,
+                    total: 0,
+                }
+            }
+        },
+        limit: {
+            type: Number,
+            default: 0
         }
-      })
-      .then((res) => {
-        console.log(res.data)
-        this.contents = res.data.data.data
-        this.pagination = res.data.pagination
-      })
-      .catch(function(error) {
-        console.log(error)
-      })
     },
-    changePage: function(page) {
-      this.pagination.current_page = page
-      this.getContents(page)
-    },
-    getPages (page) {
-      axios.get('api/page/', {
-        params: {
-            page: page
+    methods: {
+        selectPage: function(page) {
+            this.$emit('pagination-change-page', page);
+        },
+        getPages: function() {
+            if (this.limit === -1) {
+                return 0;
+            }
+
+            if (this.limit === 0) {
+                return this.data.last_page;
+            }
+
+            var start = this.data.current_page - this.limit,
+                end   = this.data.current_page + this.limit + 1,
+                pages = [],
+                index;
+
+            start = start < 1 ? 1 : start;
+            end   = end >= this.data.last_page ? this.data.last_page + 1 : end;
+
+            for (index = start; index < end; index++) {
+                pages.push(index);
+            }
+
+            return pages;
         }
-      })
-      .then((res) => {
-          this.contents = res.data.data.data
-          this.pagination = res.data.pagination
-      })
+    },
+    mounted () {
+        console.log(this.data)
+        console.log(this.data.per_page)
+
     }
-  }
 }
 </script>
-
-<style>
-  
-</style>

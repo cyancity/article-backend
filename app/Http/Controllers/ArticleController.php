@@ -13,7 +13,7 @@ class ArticleController extends Controller
 
     public function __construct(ArticleRepository $articleRepository)
     {
-        $this->middleware('auth')->except(['show','getContents','getItems','update']);
+        $this->middleware('auth')->except(['show','getCellAndPagination','update']);
         $this->articleRepository = $articleRepository;
     }
     /**
@@ -77,7 +77,10 @@ class ArticleController extends Controller
         $article = $this->articleRepository->byId($id);
         $categoryRepository = new CategoryRepository();
         $lists = $categoryRepository->getOptions();
-        return view('article.edit',compact('article','lists'));
+        return view('article.edit')->with([
+            'article' => $article,
+            'lists' => $lists
+        ]);
     }
 
     /**
@@ -113,11 +116,11 @@ class ArticleController extends Controller
         abort(500, 'Internal Problem');
     }
 
-    public function getContents(Request $request)
+    public function getCellAndPagination(Request $request)
     {
-        $id = $request->get('id');
+        $id = $request->input('id');
         $page = $request->get('page');
-        $contents = $this->articleRepository->getContentsWithPaginationByItem($id);
-        return $contents;
+        $pagination = $this->articleRepository->getCellAndPaginationByCateId($id,$page);
+        return $pagination;
     }
 }

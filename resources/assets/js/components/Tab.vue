@@ -36,7 +36,6 @@ export default {
       axios.get('/api/nav')
       .then((res) => {
         this.data = res.data
-        console.log(this.data)
       })
     }
   }

@@ -6,11 +6,11 @@
             <div class="panel panel-default col-md-9">
                 <div class="panel-body">
                     <div>
-                        <form action="/category/update-url" method="post">
+                        <form action="/category/update" method="post">
                             {{ csrf_field() }}
-                            <input type="hidden" value="{{$data->id}}" name="id">
-                            <label for="url">修改外链</label>
-                            <input id="url" type="text" value="{{$data->url}}" class="form-control" name="url">
+                            <input type="hidden" value="{{$data->title}}" name="old">
+                            <label for="name">修改分类名称</label>
+                            <input id="name" type="text" value="{{$data->title}}" class="form-control" name="name">
                             <button type="submit" class="btn btn-primary pull-right">提交修改</button>
                         </form>
                     </div>

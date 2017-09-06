@@ -8,7 +8,8 @@ window.Vue = require('vue')
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 //
-Vue.component('pagination', require('./components/Pagination.vue'));
+Vue.component('list', require('./components/List.vue'));
+Vue.component('pagination',require('./components/Pagination.vue'));
 Vue.component('dropdown',require('./components/DropdownMenu.vue'));
 Vue.component('tab', require('./components/Tab.vue'));
 Vue.component('tab-bar', require('./components/Tabbar.vue'));
@@ -18,7 +19,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
 const routes = [
-    {path: '/:id',component: require('./components/Pagination.vue')},
+    {path: '/:id',component: require('./components/List.vue')},
 ];
 
 const router = new VueRouter({

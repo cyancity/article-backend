@@ -8,7 +8,5 @@
     </div>
     <tab-bar></tab-bar>
     <router-view></router-view>
-
-
     {{--<footer>镇江民生工商</footer>--}}
 @endsection

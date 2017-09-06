@@ -13,6 +13,16 @@ class CategoryRepository
         return Category::create($data);
     }
 
+    public function byId($id)
+    {
+        return Category::find($id);
+    }
+
+    public function byIdFindPid($id)
+    {
+        return Category::find($id)->where('pid',$id)->first();
+    }
+
     public function byIdWithCateName($id)
     {
         return Category::where('pid',$id)->first();
@@ -21,11 +31,6 @@ class CategoryRepository
     public function byIdWithName($id)
     {
         return Category::find($id);
-    }
-
-    public function getCategory()
-    {
-        return Category::all();
     }
 
     public function getData()
@@ -92,6 +97,14 @@ class CategoryRepository
         return $options;
     }
 
+    public function getTreeList()
+    {
+        $data = $this->getData();
+        $tree = $this->getTree($data);
+        $list= $this->setPrefix($tree);
+        return $list;
+    }
+
     // 查询后要加get()才能获取结果
     public function getTabsById($id)
     {
@@ -114,6 +127,11 @@ class CategoryRepository
         } else {
             abort('500', 'Update error');
         }
+    }
+
+    public function deleteCateById($id)
+    {
+
     }
 
     public function updateByUrl($id, $url)

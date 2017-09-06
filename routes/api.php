@@ -12,8 +12,11 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('contents', 'ArticleController@getContents');
-Route::get('tab-items', 'CategoryController@getTabbarItems');
-Route::get('nav', 'CategoryController@getNav');
 
-Route::get('news/sub/{pid}', 'NewsController@sub');
+// 返回前端列表数据和分页数据
+Route::get('pagination', 'ArticleController@getCellAndPagination');
+// 返回首页 tabbar 数据
+Route::get('tab-items', 'CategoryController@getTabbarItems');
+// 返回首页右上角下拉框信息
+Route::get('nav', 'CategoryController@getNav');
+//

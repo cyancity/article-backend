@@ -14,26 +14,39 @@ class CategoryController extends Controller
     public function __construct(CategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
-
     }
 
     public function index()
     {
         // list all categories
-        $categories = $this->categoryRepository->getCategory();
-        return view('category.index',compact('categories'));
+        $categories = $this->categoryRepository->getTreeList();
+        return view('category.index')->with('categories',$categories);
     }
 
     public function create()
     {
         // add category
         $lists = $this->categoryRepository->getOptions();
-        return view('category.make',compact('lists'));
+        return view('category.make')->with('lists',$lists);
     }
 
     public function deleteCate($id)
     {
-
+        $data = $this->categoryRepository->byIdFindPid($id);
+        $article = $this->categoryRepository->byId($id)->articles()->first();
+        $categories = $this->categoryRepository->getTreeList();
+        if (isset($data) || isset($article)) {
+            return redirect('category')->with([
+                'error' => '当前分类分类下存在文章或者分类',
+                'categories' => $categories
+            ]);
+        } else {
+            $this->categoryRepository->byId($id)->delete();
+            return redirect('category')->with([
+                'success' => '删除成功',
+                'categories' => $categories
+            ]);
+        }
     }
 
     public function store(Request $request)
@@ -42,7 +55,10 @@ class CategoryController extends Controller
         $data = $request->input();
         $this->categoryRepository->create($data);
         $lists = $this->categoryRepository->getOptions();
-        return redirect()->route('category.create', compact('lists'))->with('success','分类添加成功');
+        return redirect('category/create')->with([
+            'lists' => $lists,
+            'success' => '添加成功'
+        ]);
     }
 
 
@@ -50,7 +66,7 @@ class CategoryController extends Controller
     {
         // edit
         $data = $this->categoryRepository->byIdWithName($id);
-        return view('/category.edit',compact('data'));
+        return view('category.edit')->with('data',$data);
     }
 
     public function update(Request $request)
@@ -58,14 +74,13 @@ class CategoryController extends Controller
         $name = $request->input('name');
         $old = $request->input('old');
         $this->categoryRepository->updateByName($old, $name);
-        $categories = $this->categoryRepository->getCategory();
+        $categories = $this->categoryRepository->getTreeList();
         return view('category.index',compact('categories'))->with('success',$name.'-修改成功');
     }
     public function editUrl($id)
     {
-        // edit
         $data = $this->categoryRepository->byIdWithName($id);
-        return view('/category.edit',compact('data'));
+        return view('category.edite')->with('data',$data);
     }
 
     public function updateUrl(Request $request)
@@ -74,7 +89,10 @@ class CategoryController extends Controller
         $id = $request->input('id');
         $this->categoryRepository->updateByUrl($id, $url);
         $categories = $this->categoryRepository->getCategory();
-        return view('category.index',compact('categories'))->with('success',$id.'-修改成功');
+        return view('category.index')->with([
+            'categories' => $categories,
+            'success' => '修改成功'
+        ]);
     }
 
     /**

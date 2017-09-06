@@ -37,25 +37,11 @@ class ArticleRepository
         return Article::paginate(10);
     }
 
-    public function getTabsArticle($pid = 1)
-    {
-
-    }
-
-    public function getArticleByTabs($tabs)
-    {
-        // Render home.blade for displaying specified articles
-        return Article::where('category', $tabs)->paginate(10);
-    }
-
-    public function getCellInfo($page)
-    {
-        return Article::select(['title','created_at'])->offset($page)->limit(10)->get();
-    }
-
-    public function getContentsWithPaginationByItem($id)
+    public function getCellAndPaginationByCateId($id, $page)
     {
         // Return the specified item content with pagination
+        $data = Article::select(['id','title','created_at'])->where('category',$id)->offset($page)->limit(10)->get();
+
         $results = Article::where('category', $id)->latest()->paginate(10);
         // response needs title, time and pagination data, missing title and time, so add
         $response = [
@@ -67,7 +53,7 @@ class ArticleRepository
                 'from' => $results->firstItem(),
                 'to' => $results->lastItem()
             ],
-            'data' => $results
+            'data' => $data
         ];
         return $response;
     }

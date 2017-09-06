@@ -27,9 +27,10 @@ Route::get('category/edit/{id}', 'CategoryController@edit');
 Route::get('category/edit-url/{id}', 'CategoryController@editUrl');
 Route::post('/category/update','CategoryController@update');
 Route::post('/category/update-url','CategoryController@updateUrl');
-Route::get('/category','CategoryController@index');
+Route::get('/category','CategoryController@index')->name('category.index');
 Route::get('/category/create','CategoryController@create')->name('category.create');
 Route::post('/category/store','CategoryController@store');
+Route::get('/category/delete-cate/{id}', 'CategoryController@deleteCate');
 
 Route::any('/news', 'NewsController@index');
 Route::get('/show/{id}','NewsController@show');

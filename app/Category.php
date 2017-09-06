@@ -9,13 +9,8 @@ class Category extends Model
     
     protected $fillable = ['title', 'article_count','pid'];
 
-    public function article()
+    public function articles()
     {
-        return $this->hasMany(Article::class)->orderBy('created_at','desc');
-    }
-
-    public function topic()
-    {
-        return $this->belongsTo(Topic::class);
+        return $this->hasMany(Article::class,'category')->orderBy('created_at','desc');
     }
 }
