@@ -80,7 +80,7 @@ class CategoryController extends Controller
     public function editUrl($id)
     {
         $data = $this->categoryRepository->byIdWithName($id);
-        return view('category.edit')->with('data',$data);
+        return view('category.url')->with('data',$data);
     }
 
     public function updateUrl(Request $request)
@@ -88,7 +88,7 @@ class CategoryController extends Controller
         $url = $request->input('url');
         $id = $request->input('id');
         $this->categoryRepository->updateByUrl($id, $url);
-        $categories = $this->categoryRepository->getCategory();
+        $categories = $this->categoryRepository->getTreeList();
         return view('category.index')->with([
             'categories' => $categories,
             'success' => '修改成功'
