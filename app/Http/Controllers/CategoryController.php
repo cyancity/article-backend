@@ -80,7 +80,7 @@ class CategoryController extends Controller
     public function editUrl($id)
     {
         $data = $this->categoryRepository->byIdWithName($id);
-        return view('category.edite')->with('data',$data);
+        return view('category.edit')->with('data',$data);
     }
 
     public function updateUrl(Request $request)
