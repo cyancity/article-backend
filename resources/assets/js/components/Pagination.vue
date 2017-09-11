@@ -63,11 +63,6 @@ export default {
 
             return pages;
         }
-    },
-    mounted () {
-        console.log(this.data)
-        console.log(this.data.per_page)
-
     }
 }
 </script>

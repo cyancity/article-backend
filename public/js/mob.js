@@ -1668,7 +1668,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           page: page
         }
       }).then(function (res) {
-        console.log(res.data);
         _this.data = res.data;
       });
     }
@@ -1747,10 +1746,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             return pages;
         }
-    },
-    mounted: function mounted() {
-        console.log(this.data);
-        console.log(this.data.per_page);
     }
 });
 
@@ -4276,7 +4271,7 @@ exports = module.exports = __webpack_require__("./node_modules/_css-loader@0.28.
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
