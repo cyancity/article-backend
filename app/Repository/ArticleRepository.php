@@ -39,11 +39,11 @@ class ArticleRepository
 
     public function getCellAndPaginationByCateId($id, $page)
     {
+        // 每页显示分页显示的条数
+        $cellNum = 10;
         // Return the specified item content with pagination
-        $data = Article::select(['id','title','created_at'])->where('category',$id)->offset($page)->limit(10)->get();
-
-        $results = Article::where('category', $id)->latest()->paginate(10);
-        // response needs title, time and pagination data, missing title and time, so add
+        $data = Article::select(['id','title','created_at'])->where('category',$id)->offset($page)->limit(10)->latest()->get();
+        $results = Article::where('category', $id)->latest()->paginate($cellNum);
         $response = [
             'pagination' => [
                 'total' => $results->total(),

@@ -10,7 +10,6 @@ window.Vue = require('vue')
 //
 Vue.component('list', require('./components/List.vue'));
 Vue.component('pagination',require('./components/Pagination.vue'));
-Vue.component('dropdown',require('./components/DropdownMenu.vue'));
 Vue.component('tab', require('./components/Tab.vue'));
 Vue.component('tab-bar', require('./components/Tabbar.vue'));
 

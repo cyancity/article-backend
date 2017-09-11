@@ -62,11 +62,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-//        return User::create([
-//            'name' => $data['name'],
-//            'email' => $data['email'],
-//            'password' => bcrypt($data['password']),
-//        ]);
-        echo '这不你该做的事情';
+        if ( config('app.env') === 'local' ) {
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+            ]);
+        } else {
+            echo '兄弟，这不是你该来的地方';
+            exit();
+        }
+
     }
 }

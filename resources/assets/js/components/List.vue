@@ -1,11 +1,11 @@
 <template>
   <div>
     <ul class="list-group">
-      <li class="row list-group-item" v-for="(content, index) in data.data" :key="index" style="display: block;min-height: 42px">
+      <li class="row list-group-item" v-for="(content, index) in data.data" :key="index">
         <a :href="'/news/show/' + content.id" class="col-xs-9">
           {{ content.title }}
         </a>
-        <span class="col-xs-3 pull-right" style="padding: 0px;">
+        <span class="col-xs-3 pull-right">
             {{content.created_at.substr(0,10)}}
           </span>
 
